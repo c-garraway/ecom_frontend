@@ -1,0 +1,9 @@
+.banner_container {
+    display: flex;
+    height: 200px;
+    background-image: url(../../images/backdrop.jpg);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    color:rgb(95, 71, 41);
+}
