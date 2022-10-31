@@ -1,0 +1,22 @@
+.ccl_container h4 {
+    padding-left: 10px;
+    
+}
+.cart_header{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 43px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    background-color: oldlace;
+}
+
+.cart_header button {
+    font-size: x-small;
+    font-weight:600;
+    padding: 5px;
+    background-color: lightcoral;
+    border-radius: 3px;
+    border: 1px solid black;
+}

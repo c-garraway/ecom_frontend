@@ -1,7 +1,13 @@
 .pc_container {
-    display: flex;
-    justify-content:space-between;
-    padding-left: 10px;
-    padding-right: 10px;
-
+    display: grid;
+    grid-template-columns: 1.5fr 2fr .5fr 1fr 1.5fr;
+    justify-content:space-around;
+    padding: 5px 10px;
+    border-bottom: 1px solid lightgray;
+    font-size: xx-small;
+}
+.pc_container button{
+    margin-left: 5px;
+    font-size: xx-small;
+    width: 70%;
 }

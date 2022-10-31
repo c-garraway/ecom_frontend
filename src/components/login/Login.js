@@ -6,8 +6,8 @@ function Login() {
         <div className="login_container">
             <form method="post">               
                 <div className="uname_container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required/>
+                    <label for="uname"><b>Email Address</b></label>
+                    <input type="text" placeholder="Enter Email Address" name="uname" required/>
                 </div>
                 <div className="psw_container">
                     <label for="psw"><b>Password</b></label>
