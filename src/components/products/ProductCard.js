@@ -6,7 +6,7 @@ function ProductCard({productName, productDescription, productPrice}) {
         <div className="pc_container">
             <p>{productName}</p>
             <p>{productDescription}</p>
-            <p>{productPrice}</p>
+            <p>$ {productPrice}</p>
             <button type="button">Add to cart</button>
             <button type="button">Remove from cart</button>
         </div>
