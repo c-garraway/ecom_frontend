@@ -4,13 +4,12 @@ import { useDispatch } from 'react-redux'
 import {addUser} from '../../features/users/currentUserSlice'
 
 function Login() {
-    
+    const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [currentUser, setCurrentUser] = useState()
-
+    
     const loginUser = async (email, password) => {
-        console.log(email, password)
+        //console.log(email, password)
         const response = await fetch('http://127.0.0.1:4000/users/login', {
             method: 'POST',
             headers: {
@@ -22,15 +21,14 @@ function Login() {
             }),  
         })
         const user = await response.json();
+        dispatch(addUser(user))
         return user
     }
-    const dispatch = useDispatch()
+    
     
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        const response = await loginUser(email, password)
-        setCurrentUser(response)
-        dispatch(addUser({currentUser}))
+        loginUser(email, password)       
     }
 
     
