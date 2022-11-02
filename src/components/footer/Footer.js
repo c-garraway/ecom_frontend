@@ -4,8 +4,8 @@ import './Footer.css'
 function Footer() {
     return(
         <div className="footer_container">
-            <h6>Footer1</h6>
-            <h6>Footer2</h6>
+            <h6>ROS: Ontario, Canada</h6>
+            <h6>Contact: (555) 555-5555</h6>
         </div>
     )
 }

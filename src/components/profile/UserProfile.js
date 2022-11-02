@@ -1,39 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import './Register.css'
+import './UserProfile.css'
 
-function Register() {
+function userProfile() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [fname, setFname] = useState("")
     const [lname, setLname] = useState("")
 
-    const registerUser = async (fname, lname, email, password) => {
-        //console.log(email, password)
-        const response = await fetch('http://127.0.0.1:4000/users/register', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "first_name": `${fname}`,
-                "last_name": `${lname}`,
-                "email_address": `${email}`,
-                "password": `${password}`
-            }),  
-        })
-        const newUser = await response.json();
-        //dispatch(addUser(user))
-        console.log(newUser)
-        return newUser
-    }
     
-    
-    const handleSubmit = async (e)=> {
-        e.preventDefault();
-        registerUser(fname, lname, email, password)       
-    }
 
     return(
         <div className="register_container">

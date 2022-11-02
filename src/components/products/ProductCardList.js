@@ -19,14 +19,14 @@ export default function ProductCardList() {
         <h4>Products</h4>
         {products.map((product) => {
             return (
-                <>
+                <div key={product.id}>
                 <ProductCard
                 productName={product.name}
                 productDescription={product.description}
                 productPrice={product.price}
                 />
                 
-                </>
+                </div>
             )          
         })}       
     </div>

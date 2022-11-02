@@ -7,6 +7,13 @@
     font-size: small;
     
 }
-/* NavLink {
+.nav_container a {
     text-decoration: none;
-} */
+    color: rgb(65, 30, 5);
+}
+.dot{
+    background-color: rgb(65, 30, 5);
+    color: antiquewhite;
+    border-radius: 5px;
+    padding: 2px;
+}

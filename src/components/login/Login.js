@@ -7,7 +7,16 @@ function Login() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [message, setMessage] = useState("")
     
+    /* const currentMessage = () => {
+        if(message){
+            if(email || password) {
+                return ''
+            }
+        }
+    } */
+
     const loginUser = async (email, password) => {
         //console.log(email, password)
         const response = await fetch('http://127.0.0.1:4000/users/login', {
@@ -21,14 +30,25 @@ function Login() {
             }),  
         })
         const user = await response.json();
-        dispatch(addUser(user))
-        return user
+        
+        if(user.message) {
+            setMessage(user.message)
+            setEmail('')
+            setPassword('')
+            return
+        } else {
+            dispatch(addUser(user))
+            return user
+        }
+        
     }
     
     
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        loginUser(email, password)       
+        loginUser(email, password)
+        setEmail('')
+        setPassword('')       
     }
 
     
@@ -41,8 +61,8 @@ function Login() {
                     <input 
                         type="email" 
                         placeholder="Enter Email Address" name="email"
-                        /* value={email} */
-                        onChange={(e) => setEmail(e.currentTarget.value)}
+                        value={email}
+                        onChange={(e) => {setEmail(e.currentTarget.value); setMessage('')}}
                         required/>
                 </div>
                 <div className="psw_container">
@@ -50,11 +70,15 @@ function Login() {
                     <input 
                         type="password"
                         placeholder="Enter Password" name="password"
-                        /* value={password} */
-                        onChange={(e) => setPassword(e.currentTarget.value)}
+                        value={password}
+                        onChange={(e) => {setPassword(e.currentTarget.value); setMessage('')}}
                         required/>
                 </div>
-                <button type="submit">Login</button>
+                <div className="btn_msg">
+                    <button type="submit">Login</button>
+                    <p className="message_container">{message}</p>
+                </div>
+                
             </form>
         </div>
     )

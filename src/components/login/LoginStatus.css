@@ -1,0 +1,11 @@
+.lStatus_container a {
+    color: antiquewhite;
+    font-size: x-small;
+    text-decoration: none;
+}
+
+.currentUser {
+    color: antiquewhite;
+    text-transform: uppercase;
+    
+}
