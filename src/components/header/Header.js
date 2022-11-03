@@ -1,6 +1,6 @@
 import React from "react";
 import './Header.css'
-import LoginStatus from "../login/LoginStatus";
+import LoginStatus from "../users/LoginStatus";
 
 
 function Header() {

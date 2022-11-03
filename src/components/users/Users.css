@@ -1,0 +1,104 @@
+/* ALL */
+label, input {
+    font-size: x-small;
+    
+}
+
+label {
+    font-weight: 500;
+    
+}
+
+button {
+    padding: 2px;
+    font-size: x-small;
+    font-weight: 500;
+    background-color: rgb(123, 213, 216);
+    border: 1px solid black;
+    border-radius: 3px;
+}
+/* LOGIN */
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-image: url(../../images/backdrop.jpg);
+    background-size: cover;
+}
+
+.login_container form {
+    border: 1px solid black;
+    padding: 10px;
+    width: min-content;
+    background-color: antiquewhite;
+    
+}
+
+
+.message_container {
+    color: red;
+    font-size: x-small;
+    text-align: right;
+}
+
+.btn_msg {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* LOGIN STATUS */
+
+.lStatus_container a {
+    color: antiquewhite;
+    font-size: x-small;
+    text-decoration: none;
+}
+
+.currentUser {
+    color: antiquewhite;
+    text-transform: uppercase;
+    
+}
+
+/* REGISTER */
+.register_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-image: url(../../images/backdrop.jpg);
+    background-size: cover;
+}
+
+.register_container form {
+    border: 1px solid black;
+    padding: 10px;
+    width: min-content;
+    background-color: antiquewhite;
+}
+
+/* USER PROFILE */
+.uProfile_container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 10px;
+    background-image: url(../../images/backdrop.jpg);
+    background-size: cover;
+}
+
+.uProfile_container form {
+    border: 1px solid black;
+    padding: 10px;
+    width: min-content;
+    background-color: antiquewhite;
+}
+
+.uProfile_header{
+    padding-left: 10px;
+    border-bottom: 1px solid lightgray;
+    background-color: oldlace;
+    color: rgb(65, 30, 5);
+}

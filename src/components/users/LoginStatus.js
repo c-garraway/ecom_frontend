@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import './LoginStatus.css'
+import './Users.css'
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../../features/users/currentUserSlice'
@@ -34,7 +34,9 @@ function LoginStatus() {
             <div>
                 {user ? 
                 <> 
-                <h6 className="currentUser">{user}</h6>         
+                <h6 className="currentUser">{user}</h6>
+                <Link to={'/profile'}>Profile</Link>
+                <span> - </span>         
                 <a 
                 href="/"
                 onClick={handleClick}>

@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import './Login.css'
+import './Users.css'
 import { useDispatch } from 'react-redux'
 import {addUser} from '../../features/users/currentUserSlice'
+
 
 function Login() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
-    
-    /* const currentMessage = () => {
-        if(message){
-            if(email || password) {
-                return ''
-            }
-        }
-    } */
-
+   
     const loginUser = async (email, password) => {
         //console.log(email, password)
         const response = await fetch('http://127.0.0.1:4000/users/login', {
@@ -43,12 +36,13 @@ function Login() {
         
     }
     
-    
+        
     const handleSubmit = async (e)=> {
         e.preventDefault();
         loginUser(email, password)
         setEmail('')
-        setPassword('')       
+        setPassword('')
+             
     }
 
     
@@ -57,7 +51,7 @@ function Login() {
         <div className="login_container">
             <form onSubmit={handleSubmit}>               
                 <div className="email_container">
-                    <label htmlFor="email"><b>Email Address</b></label>
+                    <label htmlFor="email">Email Address</label>
                     <input 
                         type="email" 
                         placeholder="Enter Email Address" name="email"
@@ -66,7 +60,7 @@ function Login() {
                         required/>
                 </div>
                 <div className="psw_container">
-                    <label htmlFor="password"><b>Password</b></label>
+                    <label htmlFor="password">Password</label>
                     <input 
                         type="password"
                         placeholder="Enter Password" name="password"
