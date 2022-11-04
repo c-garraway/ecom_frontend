@@ -1,6 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../users/currentUserSlice";
 
 const initialState = () => {
     return {
@@ -8,19 +6,10 @@ const initialState = () => {
     };
 }
 
-/* let user
-function SelectUser() {
-    user = useSelector(selectCurrentUser)
-}
-
-SelectUser() */
-
-const userID = 16
-
-
 export const loadCartItems = createAsyncThunk(
     'cartItems/loadCartItems',
-    async () => {
+    async (userID) => {
+        
         const response = await fetch(`http://192.168.86.57:4000/cartitems/${userID}`)
         const json = await response.json();
         return json

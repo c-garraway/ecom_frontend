@@ -3,15 +3,17 @@ import CartItemCard from "./CartItemCard"
 import './CartItemCardList.css'
 import { selectCartItems, loadCartItems } from '../../features/cart/cartItemsSlice'
 import { useDispatch, useSelector } from "react-redux"
+import { selectCurrentUser } from "../../features/users/currentUserSlice";
 
 /* let cartItems = [{id: 1, productName: 'p1', productDescription: 'p1_description', productPrice: 5.99}, {id: 2, productName: 'p2', productDescription: 'p2_description', productPrice: 19.99}]
  */
 export default function CartItemCardList() {
     const dispatch = useDispatch()
+    const user = useSelector(selectCurrentUser)
 
     useEffect (() => {
-        dispatch(loadCartItems())
-    }, [dispatch])
+        dispatch(loadCartItems(user.id))
+    }, [dispatch, user])
 
     const cartItems = useSelector(selectCartItems)
     

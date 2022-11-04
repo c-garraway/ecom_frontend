@@ -20,11 +20,11 @@ export default function ProductCardList() {
         {products.map((product) => {
             return (
                 <div key={product.id}>
-                <ProductCard
-                productName={product.name}
-                productDescription={product.description}
-                productPrice={product.price}
-                />
+                    <ProductCard
+                    productName={product.name}
+                    productDescription={product.description}
+                    productPrice={product.price}
+                    />
                 
                 </div>
             )          
