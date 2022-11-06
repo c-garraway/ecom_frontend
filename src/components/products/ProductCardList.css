@@ -1,11 +1,11 @@
 .pcl_container {
-    
-    /* padding-left: 10px; */
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
     
 }
-.pcl_container h4{
+.products_title h4{
     padding-left: 10px;
-    border-bottom: 1px solid lightgray;
+    /* border-bottom: 1px solid lightgray; */
     background-color: oldlace;
     color: rgb(65, 30, 5);
 }

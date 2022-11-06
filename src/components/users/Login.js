@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import './Users.css'
 import { useDispatch } from 'react-redux'
 import {addUser} from '../../features/users/currentUserSlice'
+import { loadCartItems } from '../../features/cart/cartItemsSlice'
+import { loadCartID } from '../../features/cart/cartSlice'
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
-    const dispatch = useDispatch()
+    
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    const dispatch = useDispatch() 
+    const navigate = useNavigate()
    
     const loginUser = async (email, password) => {
         //console.log(email, password)
@@ -31,7 +36,9 @@ function Login() {
             return
         } else {
             dispatch(addUser(user))
-            return user
+            dispatch(loadCartID(user.id))
+            dispatch(loadCartItems(user.id))
+            navigate('/')
         }
         
     }

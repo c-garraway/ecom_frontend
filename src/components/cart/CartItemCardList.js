@@ -12,7 +12,12 @@ export default function CartItemCardList() {
     const user = useSelector(selectCurrentUser)
 
     useEffect (() => {
-        dispatch(loadCartItems(user.id))
+        if(user.length <1) {
+            return;
+        } else {
+            dispatch(loadCartItems(user.id))
+        }
+        
     }, [dispatch, user])
 
     const cartItems = useSelector(selectCartItems)
@@ -33,6 +38,7 @@ export default function CartItemCardList() {
                     <CartItemCard
                     productName={item.name}
                     productDescription={item.description}
+                    productQuantity={item.quantity}
                     productPrice={item.price}
                     />
                 </div>

@@ -15,12 +15,15 @@ export default function ProductCardList() {
     const products = useSelector(selectAllProducts)
     
     return (
-    <div className="pcl_container">
+    <div className="products_title">
         <h4>Products</h4>
+    
+    <div className="pcl_container">
         {products.map((product) => {
             return (
                 <div key={product.id}>
                     <ProductCard
+                    productID={product.id}
                     productName={product.name}
                     productDescription={product.description}
                     productPrice={product.price}
@@ -29,6 +32,7 @@ export default function ProductCardList() {
                 </div>
             )          
         })}       
+    </div>
     </div>
     );
 }
