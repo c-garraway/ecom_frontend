@@ -4,6 +4,8 @@ import './Users.css'
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../../features/users/currentUserSlice'
+import { resetCart } from '../../features/cart/cartSlice'
+import { resetCartItems } from '../../features/cart/cartItemsSlice'
 
 function LoginStatus() {
     const dispatch = useDispatch()
@@ -21,6 +23,8 @@ function LoginStatus() {
         })
         const user = await response.json();
         dispatch(resetUser())
+        dispatch(resetCart())
+        dispatch(resetCartItems())
         console.log(user)
         return user
     }
