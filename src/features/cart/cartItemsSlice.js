@@ -44,12 +44,7 @@ export const deleteCartItem = createAsyncThunk(
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-            }/* ,
-            body: JSON.stringify({
-                "cart_id": `${cartID}`,
-                "product_id": `${productID}`,
-                "quantity": `${quantity}`,
-            }), */  
+            }  
         })
         const json = await response.json();
         return json
@@ -81,14 +76,28 @@ const cartItemsSlice = createSlice({
             state.failedToLoadSearchResults = false;
         },
         [addCartItem.fulfilled]: (state, action) => {
-            state.items.push(action.payload)
+            /* state.items.push(action.payload) */
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;
         },
         [addCartItem.rejected]: (state) => {
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
+        },
+        [deleteCartItem.pending]: (state) => {
+            state.isLoadingSearchResults = true;
+            state.failedToLoadSearchResults = false;
+        },
+        [deleteCartItem.fulfilled]: (state, action) => {
+            /* state.items.push(action.payload) */
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
+        },
+        [deleteCartItem.rejected]: (state) => {
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = true;
         }
+    
     },
     
 })

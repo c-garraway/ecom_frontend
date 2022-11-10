@@ -15,22 +15,19 @@ function LoginStatus() {
     const logoutUser = async () => {
         
         const response = await fetch('http://127.0.0.1:4000/users/logout', {
-            method: 'POST',
-            /* headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({}), */  
+            method: 'POST', 
         })
-        const user = await response.json();
-        dispatch(resetUser())
-        dispatch(resetCart())
-        dispatch(resetCartItems())
+        const user = await response.json()
+        
         console.log(user)
-        return user
+        /* return user */
     }
 
     const handleClick = () => {
         logoutUser()
+        dispatch(resetUser())
+        dispatch(resetCart())
+        dispatch(resetCartItems())
     }
 
     return(

@@ -4,12 +4,17 @@
 }
 .cart_header{
     display: flex;
+    position: fixed;
+    width: 100%;
+    top: 92px;
+    z-index: 20;
+    background-color: white;
     justify-content: space-between;
     padding-right: 43px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid lightgray;
-    background-color: oldlace;
+    /* background-color: oldlace; */
 }
 
 .cart_header button {
@@ -21,8 +26,9 @@
     border: 1px solid black;
 }
 
-/* .cartItems_container {
-    margin: 10px auto;
+.cartItems_container {
+    margin-top: 144px;
+    /* margin: 10px auto;
     border: 1px solid lightgray;
-    width: 80%;
-} */
+    width: 80%; */
+}

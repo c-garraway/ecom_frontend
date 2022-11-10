@@ -32,7 +32,7 @@ export default function CartItemCardList() {
             <h4>Cart Items</h4>
             <span>
                 <button type="button">Purchase</button>
-                <h6>Total: ${cartTotal[0].total}</h6>
+                <h6>Total: ${cartTotal.length < 1 ? 0 : cartTotal[0].total}</h6>
             </span>
             
         </div>

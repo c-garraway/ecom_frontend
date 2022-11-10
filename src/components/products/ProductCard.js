@@ -13,18 +13,21 @@ function ProductCard({productID, productName, productDescription, productPrice})
     const navigate = useNavigate()
 
     const handleAddClick = async () => {
+        let newCart = ''
         if(user.length < 1) {
             navigate('/login')
         } else {
             if(cartId.length < 1) {
-                await dispatch(createCartID(user.id))
-                await dispatch(addCartItem({cartID: cartId[0].id, productID: productID, quantity: 1}))
-                await dispatch(loadCartItems(user.id))
-            } else {
-                await dispatch(addCartItem({cartID: cartId[0].id, productID: productID, quantity: 1}))
-                await dispatch(updateCartTotal(user.id))
-                await dispatch(loadCartItems(user.id))
-            }
+                newCart = await dispatch(createCartID(user.id))
+            } 
+           
+            await dispatch(addCartItem({
+                cartID: newCart !== '' ? newCart.payload.cart.id : cartId[0].id, 
+                productID: productID,
+                quantity: 1}))
+            await dispatch(updateCartTotal(user.id))
+            await dispatch(loadCartItems(user.id))
+           
             
         }
     }

@@ -1,9 +1,9 @@
 .nav_container {
     display: flex;
     justify-content: space-between;
-    background-color: bisque;
+    background-color: oldlace;
     align-items: center;
-    padding: 10px;
+    padding: 5px 10px;
     font-size: small;
     
 }
