@@ -7,14 +7,25 @@
 } */
 .cc_container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr .5fr 1fr;
     justify-content:space-around;
+    margin: auto;
     padding: 5px 10px;
     border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
     font-size: xx-small;
+    width: 80%;
+    
 }
 .cc_container button{
     margin-left: 5px;
     font-size: xx-small;
     width: 70%;
+}
+.cartItemDesc{
+    text-transform: capitalize;
+}
+.cartItemsQty{
+    text-align: center;
 }

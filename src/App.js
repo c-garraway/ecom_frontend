@@ -14,9 +14,11 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Header/>
-      <NavBar/>
-      <main>
+      <div className='fixed_container'>
+        <Header/>
+        <NavBar/>
+      </div>
+      <main className='main_container'>
         <Routes>
           <Route path='/' element={<Banner/>} />
           <Route path='/login' element={<Login/>} />

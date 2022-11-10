@@ -37,6 +37,25 @@ export const addCartItem = createAsyncThunk(
     }
 )
 
+export const deleteCartItem = createAsyncThunk(
+    'cartItems/deleteCartItem',
+    async (cartItemID) => {
+        const response = await fetch(`http://192.168.86.57:4000/cartitems/${cartItemID}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            }/* ,
+            body: JSON.stringify({
+                "cart_id": `${cartID}`,
+                "product_id": `${productID}`,
+                "quantity": `${quantity}`,
+            }), */  
+        })
+        const json = await response.json();
+        return json
+    }
+)
+
 const cartItemsSlice = createSlice({
     name: 'cartItems',
     initialState: initialState(),

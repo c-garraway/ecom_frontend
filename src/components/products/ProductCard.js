@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import './ProductCard.css'
 import { addCartItem, loadCartItems  } from '../../features/cart/cartItemsSlice'
-import { selectCartID, createCartID } from "../../features/cart/cartSlice";
+import { selectCartID, createCartID, updateCartTotal } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
 
@@ -22,6 +22,7 @@ function ProductCard({productID, productName, productDescription, productPrice})
                 await dispatch(loadCartItems(user.id))
             } else {
                 await dispatch(addCartItem({cartID: cartId[0].id, productID: productID, quantity: 1}))
+                await dispatch(updateCartTotal(user.id))
                 await dispatch(loadCartItems(user.id))
             }
             
@@ -35,14 +36,14 @@ function ProductCard({productID, productName, productDescription, productPrice})
             </div>
             <div className="pr_container">               
                 <p>{productDescription}</p>
-                <p>$ {productPrice}</p>
+                <p><b>${productPrice}</b></p>
             </div>
             <div className="pc_buttons">
                 <button 
                 type="button"
                 onClick={handleAddClick}
                 >Add to cart</button>
-                <button type="button" className="rem_btn">Favorite</button>
+                {/* <button type="button" className="rem_btn">Favorite</button> */}
             </div>
         </div>
     );

@@ -5,10 +5,10 @@
     justify-content:space-around;
     padding: 5px 10px;
     /* border: 1px solid lightgray; */
-    font-size: xx-small;
+    font-size: x-small;
     margin: 1px;
     height: 3rem;
-    text-transform:initial;
+    text-transform:capitalize;
 }
 .pc_container {
     /* display: grid;
@@ -33,7 +33,7 @@
 }
 .pc_buttons{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     /* background-color: azure; */
     /* height: 25px; */
     /* border: 1px solid lightgray; */

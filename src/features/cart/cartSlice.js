@@ -10,7 +10,7 @@ const initialState = () => {
 export const loadCartID = createAsyncThunk(
     'cart/loadCartID',
     async (userID) => {
-        const response = await fetch(`http://192.168.86.57:4000/carts/${userID}`)
+        const response = await fetch(`http://192.168.86.57:4000/carts/user/${userID}`)
         const json = await response.json();
         return json
     }
@@ -28,6 +28,20 @@ export const createCartID = createAsyncThunk(
             body: JSON.stringify({
                 "user_id": `${userID}`
             }),  
+        })
+        const json = await response.json();
+        return json
+    }
+)
+
+export const updateCartTotal = createAsyncThunk(
+    'cart/updateCartTotal',
+    async (userID) => {
+        const response = await fetch(`http://192.168.86.57:4000/carts/user/${userID}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            } 
         })
         const json = await response.json();
         return json
@@ -64,6 +78,19 @@ const cartSlice = createSlice({
             state.failedToLoadSearchResults = false;
         },
         [createCartID.rejected]: (state) => {
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = true;
+        },
+        [updateCartTotal.pending]: (state) => {
+            state.isLoadingSearchResults = true;
+            state.failedToLoadSearchResults = false;
+        },
+        [updateCartTotal.fulfilled]: (state, action) => {
+            state.cartID = action.payload
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
+        },
+        [updateCartTotal.rejected]: (state) => {
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
         }
