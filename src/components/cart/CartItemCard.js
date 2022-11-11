@@ -1,18 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './CartItemCard.css'
-import { deleteCartItem, loadCartItems } from '../../features/cart/cartItemsSlice'
-import { selectCurrentUser } from "../../features/users/currentUserSlice";
-import { updateCartTotal } from "../../features/cart/cartSlice";
+import { loadCartItems } from '../../features/cart/cartItemsSlice'
+import { loadCart } from "../../features/cart/cartSlice"
+import { selectCurrentUser } from "../../features/users/currentUserSlice"
+import { deleteCartItem, updateCart } from '../../utilities'
 
 function CartItemCard({cartItemID, cartItemName, cartItemDescription, cartItemQuantity, cartItemPrice}) {
     const user = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
 
     const handleDelClick = async () => {
-        await dispatch(deleteCartItem(cartItemID))
-        await dispatch(updateCartTotal(user.id))
-        await dispatch(loadCartItems(user.id))
+        await deleteCartItem(cartItemID)
+        await updateCart(user.id)
+        dispatch(loadCart(user.id))
+        dispatch(loadCartItems(user.id))
     }
 
     return (

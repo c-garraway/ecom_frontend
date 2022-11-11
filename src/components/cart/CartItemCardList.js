@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import CartItemCard from "./CartItemCard"
 import './CartItemCardList.css'
 import { selectCartItems, loadCartItems } from '../../features/cart/cartItemsSlice'
+import { loadCart } from "../../features/cart/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { selectCurrentUser } from "../../features/users/currentUserSlice";
-import { selectCartID, updateCartTotal } from "../../features/cart/cartSlice";
+import { selectCurrentUser } from "../../features/users/currentUserSlice"
+import { selectCart } from "../../features/cart/cartSlice"
+import { updateCart } from "../../utilities";
 
-/* let cartItems = [{id: 1, productName: 'p1', productDescription: 'p1_description', productPrice: 5.99}, {id: 2, productName: 'p2', productDescription: 'p2_description', productPrice: 19.99}]
- */
 export default function CartItemCardList() {
     const dispatch = useDispatch()
     const user = useSelector(selectCurrentUser)
@@ -17,22 +17,23 @@ export default function CartItemCardList() {
         if(user.length <1) {
             return;
         } else {
-            dispatch(updateCartTotal(user.id))
+            updateCart(user.id)
+            dispatch(loadCart(user.id))
             dispatch(loadCartItems(user.id))
         }
         
     }, [dispatch, user])
 
     const cartItems = useSelector(selectCartItems)
-    const cartTotal = useSelector(selectCartID)
-
+    const cartTotal = useSelector(selectCart)
+    /* console.log(cartTotal) */
     return (
     <div className="ccl_container">
         <div className="cart_header">
             <h4>Cart Items</h4>
             <span>
                 <button type="button">Purchase</button>
-                <h6>Total: ${cartTotal.length < 1 ? 0 : cartTotal[0].total}</h6>
+                <h6>Total: ${cartTotal.length < 1 ? 0 : cartTotal.cart.total}</h6>
             </span>
             
         </div>

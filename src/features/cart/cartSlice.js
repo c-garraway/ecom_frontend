@@ -2,47 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = () => {
     return {
-        cartID: []
-        
+        cart: []
     };
 }
 
-export const loadCartID = createAsyncThunk(
-    'cart/loadCartID',
+export const loadCart = createAsyncThunk(
+    'cart/loadCart',
     async (userID) => {
         const response = await fetch(`http://192.168.86.57:4000/carts/user/${userID}`)
-        const json = await response.json();
-        return json
-    }
-)
-
-export const createCartID = createAsyncThunk(
-    'cart/createCartID',
-    async (userID) => {
-        
-        const response = await fetch('http://192.168.86.57:4000/carts', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "user_id": `${userID}`
-            }),  
-        })
-        const json = await response.json();
-        return json
-    }
-)
-
-export const updateCartTotal = createAsyncThunk(
-    'cart/updateCartTotal',
-    async (userID) => {
-        const response = await fetch(`http://192.168.86.57:4000/carts/user/${userID}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-            } 
-        })
         const json = await response.json();
         return json
     }
@@ -55,42 +22,16 @@ const cartSlice = createSlice({
         resetCart: () => initialState()
     },
     extraReducers: {
-        [loadCartID.pending]: (state) => {
+        [loadCart.pending]: (state) => {
             state.isLoadingSearchResults = true;
             state.failedToLoadSearchResults = false;
         },
-        [loadCartID.fulfilled]: (state, action) => {
-            state.cartID = action.payload
+        [loadCart.fulfilled]: (state, action) => {
+            state.cart = action.payload
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;
         },
-        [loadCartID.rejected]: (state) => {
-            state.isLoadingSearchResults = false;
-            state.failedToLoadSearchResults = true;
-        },
-        [createCartID.pending]: (state) => {
-            state.isLoadingSearchResults = true;
-            state.failedToLoadSearchResults = false;
-        },
-        [createCartID.fulfilled]: (state, action) => {
-            state.cartID = action.payload
-            state.isLoadingSearchResults = false;
-            state.failedToLoadSearchResults = false;
-        },
-        [createCartID.rejected]: (state) => {
-            state.isLoadingSearchResults = false;
-            state.failedToLoadSearchResults = true;
-        },
-        [updateCartTotal.pending]: (state) => {
-            state.isLoadingSearchResults = true;
-            state.failedToLoadSearchResults = false;
-        },
-        [updateCartTotal.fulfilled]: (state, action) => {
-            state.cartID = action.payload
-            state.isLoadingSearchResults = false;
-            state.failedToLoadSearchResults = false;
-        },
-        [updateCartTotal.rejected]: (state) => {
+        [loadCart.rejected]: (state) => {
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
         }
@@ -99,5 +40,5 @@ const cartSlice = createSlice({
 })
 
 export const {resetCart} = cartSlice.actions
-export const selectCartID = (state) => state.cart.cartID
+export const selectCart = (state) => state.cart.cart
 export default cartSlice.reducer

@@ -3,8 +3,9 @@ import './Users.css'
 import { useDispatch } from 'react-redux'
 import {addUser} from '../../features/users/currentUserSlice'
 import { loadCartItems } from '../../features/cart/cartItemsSlice'
-import { loadCartID } from '../../features/cart/cartSlice'
+import { loadCart } from '../../features/cart/cartSlice'
 import { useNavigate } from "react-router-dom";
+import { createCart } from '../../utilities'
 
 
 function Login() {
@@ -16,7 +17,7 @@ function Login() {
     const navigate = useNavigate()
    
     const loginUser = async (email, password) => {
-        //console.log(email, password)
+
         const response = await fetch('http://127.0.0.1:4000/users/login', {
             method: 'POST',
             headers: {
@@ -36,9 +37,8 @@ function Login() {
             return
         } else {
             dispatch(addUser(user))
-            dispatch(loadCartID(user.id))
-            dispatch(loadCartItems(user.id))
-            navigate('/')
+            return user
+            
         }
         
     }
@@ -46,10 +46,29 @@ function Login() {
         
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        loginUser(email, password)
-        setEmail('')
-        setPassword('')
-             
+        const user = await loginUser(email, password)
+        
+        if (user === undefined) {
+            return
+        }   else {
+            try {
+                const checkCart = await dispatch(loadCart(user.id))
+                if(checkCart.payload.message) {
+                    await createCart(user.id)
+                }
+                await dispatch(loadCart(user.id))
+                dispatch(loadCartItems(user.id))
+                
+                
+            } catch (error) {
+                console.log(error)
+            }
+            
+            setEmail('')
+            setPassword('')
+            navigate('/') 
+        }
+                
     }
 
     

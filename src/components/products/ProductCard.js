@@ -1,34 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './ProductCard.css'
-import { addCartItem, loadCartItems  } from '../../features/cart/cartItemsSlice'
-import { selectCartID, createCartID, updateCartTotal } from "../../features/cart/cartSlice";
+import { loadCartItems  } from '../../features/cart/cartItemsSlice'
+import { selectCart, loadCart } from "../../features/cart/cartSlice";
+/* import { createCart } from "../../utilities"; */
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
+import { addCartItem, updateCart } from '../../utilities'
 
 function ProductCard({productID, productName, productDescription, productPrice}) {
     const dispatch = useDispatch()
     const user = useSelector(selectCurrentUser)
-    const cartId = useSelector(selectCartID)
+    const cartId = useSelector(selectCart)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        if (user.id === undefined) {
+            return
+        } else {
+            dispatch(loadCart(user.id))
+        }
+        
+    }, [dispatch, user])
+
     const handleAddClick = async () => {
-        let newCart = ''
+        /* let newCart = '' */
         if(user.length < 1) {
             navigate('/login')
         } else {
-            if(cartId.length < 1) {
-                newCart = await dispatch(createCartID(user.id))
-            } 
-           
-            await dispatch(addCartItem({
-                cartID: newCart !== '' ? newCart.payload.cart.id : cartId[0].id, 
+            /* if(cartId.length < 1) {
+                newCart = await createCart(user.id)
+                
+            }  */
+           /* console.log(newCart, cartId) */
+            addCartItem({
+                cartID: /* newCart !== '' ? newCart.cart.id :  */cartId.cart.id, 
                 productID: productID,
-                quantity: 1}))
-            await dispatch(updateCartTotal(user.id))
-            await dispatch(loadCartItems(user.id))
-           
-            
+                quantity: 1})
+            await updateCart(user.id)
+            await dispatch(loadCart(user.id))
+            dispatch(loadCartItems(user.id))
         }
     }
 
