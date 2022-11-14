@@ -9,7 +9,7 @@ function NavBar() {
 
     const cartItems = useSelector(selectCartItems)
     const numCartItems = cartItems.length
-
+    /* console.log(numCartItems) */
     return(
         <div className="nav_container">
             <NavLink to="/">HOME</NavLink>
