@@ -9,7 +9,7 @@ const initialState = () => {
 export const loadOrder = createAsyncThunk(
     'order/loadOrder',
     async (userID) => {
-        const response = await fetch(`http://192.168.86.57:4000/order/user/${userID}`)
+        const response = await fetch(`http://192.168.86.57:4000/orders/user/${userID}`)
         const json = await response.json();
         return json
     }
@@ -27,7 +27,7 @@ const orderSlice = createSlice({
             state.failedToLoadSearchResults = false;
         },
         [loadOrder.fulfilled]: (state, action) => {
-            state.cart = action.payload
+            state.order = action.payload
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;
         },
@@ -40,5 +40,5 @@ const orderSlice = createSlice({
 })
 
 export const {resetOrder} = orderSlice.actions
-export const selectOrder = (state) => state.order.order
+export const selectOrder = (state) => state.order
 export default orderSlice.reducer

@@ -40,6 +40,15 @@ function UserProfile() {
                             defaultValue={userInfo.email_address}
                             required/>
                     </div>
+                    <div className="address_container">
+                        <label htmlFor="address"><b>Address</b></label>
+                        <input 
+                            type="text" 
+                            
+                            name="address" 
+                            defaultValue={userInfo.address}
+                            required/>
+                    </div>
                     <div className="acreated_container">
                         <label htmlFor="acreated"><b>Account Created Date</b></label>
                         <input 

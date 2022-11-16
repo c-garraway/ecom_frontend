@@ -2,6 +2,7 @@
 
 export const baseURL = 'http://192.168.86.57:4000'
 
+
 // cartItem functions
 export const addCartItem = async (callData) => {
     const {cartID, productID, quantity} = callData
@@ -60,14 +61,14 @@ export const updateCart = async (userID) => {
 
 // orderItem functions
 export const addOrderItem = async (callData) => {
-    const {cartID, productID, quantity} = callData
-    const response = await fetch(`${baseURL}/cartitems`, {
+    const {orderID, productID, quantity} = callData
+    const response = await fetch(`${baseURL}/orderitems`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "cart_id": `${cartID}`,
+            "order_id": `${orderID}`,
             "product_id": `${productID}`,
             "quantity": `${quantity}`,
         }),  
@@ -78,7 +79,7 @@ export const addOrderItem = async (callData) => {
 
 
 export const deleteOrderItem = async (cartItemID) => {
-    const response = await fetch(`${baseURL}/cartitems/${cartItemID}`, {
+    const response = await fetch(`${baseURL}/orderitems/${cartItemID}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
@@ -89,14 +90,16 @@ export const deleteOrderItem = async (cartItemID) => {
 }
 
 // order functions
-export const createOrder =  async (userID) => {
-    const response = await fetch(`${baseURL}/carts`, {
+export const createOrder =  async (callData) => {
+    const {user_id, status} = callData
+    const response = await fetch(`${baseURL}/orders`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                "user_id": `${userID}`
+                "user_id": `${user_id}`,
+                "status": `${status}`
             }),  
         })
         const json = await response.json();
@@ -104,7 +107,7 @@ export const createOrder =  async (userID) => {
 }
 
 export const updateOrder = async (userID) => {
-    const response = await fetch(`${baseURL}/carts/user/${userID}`, {
+    const response = await fetch(`${baseURL}/orders/user/${userID}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",

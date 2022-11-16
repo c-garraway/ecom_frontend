@@ -10,7 +10,7 @@ const initialState = () => {
 export const loadOrderItems = createAsyncThunk(
     'orderItems/loadOrderItems',
     async (userID) => {
-        const response = await fetch(`http://192.168.86.57:4000/orderitems/${userID}`)
+        const response = await fetch(`http://192.168.86.57:4000/orderitems/user/${userID}`)
         const json = await response.json()
         return json
     }

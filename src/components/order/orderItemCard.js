@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './CartItemCard.css'
-import { loadOrderItems } from '../../features/cart/cartItemsSlice'
-import { loadOrder } from "../../features/cart/cartSlice"
+import './OrderItemCard.css'
+import { loadOrderItems } from '../../features/order/orderItemsSlice'
+/* import { loadOrder } from "../../features/order/orderSlice" */
 import { selectCurrentUser } from "../../features/users/currentUserSlice"
 import { deleteOrderItem, updateOrder } from '../../utilities'
+import { loadOrder } from "../../features/order/orderSlice";
 
 function OrderItemCard({orderItemID, orderItemName, orderItemDescription, orderItemQuantity, orderItemPrice}) {
     const user = useSelector(selectCurrentUser)
@@ -13,15 +14,16 @@ function OrderItemCard({orderItemID, orderItemName, orderItemDescription, orderI
     const handleDelClick = async () => {
         await deleteOrderItem(orderItemID)
         await updateOrder(user.id)
+        await dispatch(loadOrder(user.id))
         dispatch(loadOrderItems(user.id))
-        dispatch(loadOrderItems(user.id))
+        
     }
 
     return (
-        <div className="cc_container">
+        <div className="oc_container">
             <p>{orderItemName}</p>
-            <p className="cartItemDesc">{orderItemDescription}</p>
-            <p className="cartItemsQty">Qty: {orderItemQuantity}</p>
+            <p className="orderItemDesc">{orderItemDescription}</p>
+            <p className="orderItemsQty">Qty: {orderItemQuantity}</p>
             <p>$ {orderItemPrice}</p>
             <button 
             type="button"

@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from '../../features/users/currentUserSlice'
 import { resetCart } from '../../features/cart/cartSlice'
 import { resetCartItems } from '../../features/cart/cartItemsSlice'
+import { resetOrder } from '../../features/order/orderSlice'
+import { resetOrderItems } from '../../features/order/orderItemsSlice'
 
 function LoginStatus() {
     const dispatch = useDispatch()
@@ -28,6 +30,8 @@ function LoginStatus() {
         dispatch(resetUser())
         dispatch(resetCart())
         dispatch(resetCartItems())
+        dispatch(resetOrder())
+        dispatch(resetOrderItems())
     }
 
     return(
