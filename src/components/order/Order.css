@@ -1,0 +1,64 @@
+
+.oc_container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr .5fr 1fr;
+    justify-content:space-around;
+    margin: auto;
+    padding: 5px 10px;
+    /* border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray; */
+    font-size: xx-small;
+    /* width: 80%; */
+    
+}
+.OrderItemsList{
+    border: 1px solid lightgray;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+}
+.oc_container button{
+    margin-left: 5px;
+    font-size: xx-small;
+}
+.orderItemDesc{
+    text-transform: capitalize;
+}
+.orderItemsQty{
+    text-align: center;
+}
+.orderDetails_container{
+    font-size: x-small;
+}
+
+.ocl_container h4 {
+    padding-left: 10px;
+    color: rgb(65, 30, 5);
+}
+.order_header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin:auto
+}
+
+.order_header button {
+    font-size: x-small;
+    font-weight:600;
+    padding: 5px;
+    background-color: lightcoral;
+    border-radius: 0px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.orderItems_container h5 {
+    text-align: center;
+}
+
+.transactionDetails_container{
+    font-size: x-small;
+}

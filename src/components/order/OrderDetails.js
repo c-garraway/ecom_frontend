@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectOrder } from "../../features/order/orderSlice";
 import { selectCurrentUser } from "../../features/users/currentUserSlice";
-import './OrderItemCard.css'
+import './Order.css'
 
 function OrderDetails() {
     const user = useSelector(selectCurrentUser)
@@ -10,7 +10,7 @@ function OrderDetails() {
 
 
   return (
-    <div className="od_container">
+    <div className="orderDetails_container">
         <h3>Order Details</h3>
         <p>Name: {user.first_name} {user.last_name}</p>
         <p>Address: {user.address}</p>

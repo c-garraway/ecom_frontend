@@ -8,8 +8,9 @@ import NavBar from './components/navBar/NavBar';
 import Banner from './components/banner/Banner';
 import ProductCardList from './components/products/ProductCardList';
 import CartItemCardList from './components/cart/CartItemCardList';
-import OrderItemCardList from './components/order/orderItemCardList';
+import OrderItemCardList from './components/order/Order';
 import Footer from './components/footer/Footer';
+import Purchased from './components/purchase/Purchase';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/products' element={<ProductCardList/>} />
           <Route path='/cart' element={<CartItemCardList/>} />
           <Route path='/order' element={<OrderItemCardList/>} />
+          <Route path='/successfulpurchase' element={<Purchased/>} />
         </Routes>
       </main>
       <Footer/>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './OrderItemCard.css'
+import './Order.css'
 import { loadOrderItems } from '../../features/order/orderItemsSlice'
 /* import { loadOrder } from "../../features/order/orderSlice" */
 import { selectCurrentUser } from "../../features/users/currentUserSlice"
