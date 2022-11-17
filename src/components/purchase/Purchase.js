@@ -10,9 +10,9 @@ function Purchased() {
     }
     
   return (
-    <div>
-        <div>Purchase Successfully Completed!</div>
-        <div>Thank you for your business.</div>
+    <div className="thankYou_container">
+        <div>Successfully Completed.</div>
+        <div>Thank you for your purchase!</div>
         <button
         type="button"
         onClick={handleClick}>Continue Shopping</button>

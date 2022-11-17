@@ -4,7 +4,17 @@
   margin: 0%;
 }
 
-.App {
+.fixed_container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+ }
+
+ .main_container {
+  margin-top: 150px;
+ }
+
+/* .App {
   text-align: center;
 }
 
@@ -31,15 +41,7 @@
 .App-link {
   color: rgb(112, 76, 182);
 }
- .fixed_container {
-  position: fixed;
-  top: 0;
-  width: 100%;
- }
 
- .main_container {
-  margin-top: 100px;
- }
 
 @keyframes App-logo-float {
   0% {
@@ -51,4 +53,4 @@
   100% {
     transform: translateY(0px);
   }
-}
+} */

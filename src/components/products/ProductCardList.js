@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProductCard from "./ProductCard";
-import './ProductCardList.css'
+import './Product.css'
 import { useSelector, useDispatch  } from 'react-redux'
 import {loadAllProducts, selectAllProducts} from '../../features/products/productsSlice'
 
@@ -15,24 +15,22 @@ export default function ProductCardList() {
     const products = useSelector(selectAllProducts)
     
     return (
-    <div className="products_title">
-        <h4>Products</h4>
-    
-    <div className="pcl_container">
-        {products.map((product) => {
-            return (
-                <div key={product.id}>
-                    <ProductCard
-                    productID={product.id}
-                    productName={product.name}
-                    productDescription={product.description}
-                    productPrice={product.price}
-                    />
-                
-                </div>
-            )          
-        })}       
-    </div>
-    </div>
+ 
+        <div className="pcl_container">
+            {products.map((product) => {
+                return (
+                    <div key={product.id}>
+                        <ProductCard
+                        productID={product.id}
+                        productName={product.name}
+                        productDescription={product.description}
+                        productPrice={product.price}
+                        />
+                    
+                    </div>
+                )          
+            })}       
+        </div>
+
     );
 }

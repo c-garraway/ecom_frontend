@@ -1,45 +1,29 @@
-
-.oc_container {
+.cc_container {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr .5fr 1fr;
     justify-content:space-around;
     margin: auto;
     margin-top: 10px;
-
     padding: 5px 10px;
-    /* border-bottom: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray; */
     border-top: 1px solid lightgray;
     font-size: small;
-    /* width: 80%; */
-    
 }
-.OrderItemsList{
-    border: 1px solid lightgray;
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
-}
-.oc_container button{
+.cc_container button{
     margin-left: 5px;
     font-size: small;
 }
-.orderItemDesc{
+.cartItemDesc{
     text-transform: capitalize;
 }
-.orderItemsQty{
+.cartItemsQty{
     text-align: center;
 }
-.orderDetails_container{
-    font-size: medium;
-}
-
-.ocl_container h4 {
+.ccl_container h4 {
     padding-left: 10px;
     color: rgb(65, 30, 5);
+    font-size: large;
 }
-.order_header{
+.cart_header{
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 90%;
@@ -48,22 +32,23 @@
     margin:auto
 }
 
-.order_header button {
+.cart_header button {
     font-size: small;
-    font-weight:600;
     padding: 5px;
     background-color: lightcoral;
-    border-radius: 0px;
+    border-radius: none;
     border: 1px solid black;
-    margin-top: 10px;
+    width: 50%;
+    justify-self: right;
 }
 
-.orderItems_container h5 {
+.cartItems_container h5 {
     text-align: center;
     font-size: large;
-
 }
-
-.transactionDetails_container{
-    font-size: medium;
+.cartItemsList{
+    border: 1px solid lightgray;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
 }

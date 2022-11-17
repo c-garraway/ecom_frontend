@@ -36,25 +36,27 @@ function LoginStatus() {
 
     return(
         <div className="lStatus_container">
+                <div className="dropdown">
+                    <button className="dropbtn">{user} &#x25BC;
+                    
+                    </button>
+                    <div className="dropdown-content">
+                    {user ? 
+                    <div> 
+                        {/* <h6 className="currentUser">{user}</h6> */}
+                        <Link to={'/profile'}>Profile</Link> 
+                        <a href="/" onClick={handleClick}>Logout</a>
+                    </div>
+                    :
+                    <div>
+                        <Link to={'/login'}>Login</Link>
+                        <Link to={'/register'}>Register</Link>
+                    </div>
+                    }
+                </div>
+            </div> 
             <div>
-                {user ? 
-                <> 
-                <h6 className="currentUser">{user}</h6>
-                <Link to={'/profile'}>Profile</Link>
-                <span> - </span>         
-                <a 
-                href="/"
-                onClick={handleClick}>
-                Logout
-                </a>
-                </>
-                :
-                <h6>
-                <Link to={'/login'}>Login</Link>
-                <span> - </span>
-                <Link to={'/register'}>Register</Link>
-                </h6>
-                }
+                
             </div>
         </div>
     )

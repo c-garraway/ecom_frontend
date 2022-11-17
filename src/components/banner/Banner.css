@@ -1,8 +1,7 @@
 .banner_container {
     display: flex;
-    height: 200px;
-    /* background-image: url(../../images/backdrop.jpg); */
-    background-size: cover;
+    font-size:large;
+    height: 10em;
     align-items: center;
     justify-content: center;
     color:rgb(65, 30, 5);

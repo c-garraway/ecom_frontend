@@ -3,18 +3,31 @@ import {NavLink} from "react-router-dom"
 import './NavBar.css'
 import { selectCartItems } from '../../features/cart/cartItemsSlice'
 import { useSelector } from "react-redux"
-
+import shoppingCart from '../../images/cart.png'
 
 function NavBar() {
-
     const cartItems = useSelector(selectCartItems)
     const numCartItems = cartItems.length
-    /* console.log(numCartItems) */
+
     return(
         <div className="nav_container">
-            <NavLink to="/">HOME</NavLink>
-            <NavLink to="/products">PRODUCTS</NavLink>
-            <NavLink to="/cart">CART <span className="dot">{numCartItems}</span></NavLink>       
+            <div>
+                <NavLink 
+                end
+                to="/" 
+                className={(navData) => "nav_link_active_" + navData.isActive }
+                >HOME</NavLink>
+                <NavLink 
+                to="/products"
+                className={(navData) => "nav_link_active_" + navData.isActive }
+                >PRODUCTS</NavLink>
+            </div>
+            <div>
+                <NavLink to="/cart"
+                className={(navData) => "nav_link_active_" + navData.isActive }
+                ><img src={shoppingCart} alt="CART" width={25}/> <span className="dot">{numCartItems}</span></NavLink>     
+            </div>
+                
             
         </div>
     )

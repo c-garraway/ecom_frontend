@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './CartItemCard.css'
+import './Cart.css'
 import { loadCartItems } from '../../features/cart/cartItemsSlice'
 import { loadCart } from "../../features/cart/cartSlice"
 import { selectCurrentUser } from "../../features/users/currentUserSlice"

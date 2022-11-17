@@ -1,14 +1,14 @@
 import React from "react";
 import './Header.css'
-import LoginStatus from "../users/LoginStatus";
+import UserStatus from "../users/UserStatus";
 
 
 function Header() {
 
     return(
-        <div className="head_container">
+        <div className="header_container">
             <h1>RANDOM ONLINE STORE</h1>
-            <LoginStatus />
+            <UserStatus />
         </div>
     )
 }

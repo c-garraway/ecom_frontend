@@ -1,3 +1,13 @@
-.ft_container{
-    font-size: x-small;
+.thankYou_container{
+    border: 1px solid lightgray;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.thankYou_container button{
+    font-size: medium;
+    width: 100%;
+    margin-top: 10px;
 }

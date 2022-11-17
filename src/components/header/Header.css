@@ -1,12 +1,10 @@
-.head_container {
+.header_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    padding-right: 20px;
     background-color: rgb(65, 30, 5);
     color: antiquewhite;
-}
-.head_container h6 {
-    font-weight:lighter;
-
+    font-size:x-large;
 }

@@ -54,14 +54,14 @@ button {
 
 .lStatus_container a {
     color: antiquewhite;
-    font-size: x-small;
+    font-size: small;
     text-decoration: none;
 }
 
-.currentUser {
+.dropbtn {
     color: antiquewhite;
     text-transform: uppercase;
-    
+    font-weight:lighter;
 }
 
 /* REGISTER */
@@ -104,3 +104,49 @@ button {
     /* background-color: oldlace; */
     color: rgb(65, 30, 5);
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+background-color: #ddd;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    width: 100px;
+    /* padding: 14px 16px; */
+    background-color: inherit;
+    font-family: inherit;
+    /* margin: 0; */
+    border: 1px solid oldlace;
+    border-radius: 15px;
+    
+  }

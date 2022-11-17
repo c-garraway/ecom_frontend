@@ -7,8 +7,8 @@ import UserProfile from './components/users/UserProfile'
 import NavBar from './components/navBar/NavBar';
 import Banner from './components/banner/Banner';
 import ProductCardList from './components/products/ProductCardList';
-import CartItemCardList from './components/cart/CartItemCardList';
-import OrderItemCardList from './components/order/Order';
+import Cart from './components/cart/Cart';
+import Order from './components/order/Order';
 import Footer from './components/footer/Footer';
 import Purchased from './components/purchase/Purchase';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
@@ -27,8 +27,8 @@ function App() {
           <Route path='/register' element={<Register/>} />
           <Route path='/profile' element={<UserProfile/>} />
           <Route path='/products' element={<ProductCardList/>} />
-          <Route path='/cart' element={<CartItemCardList/>} />
-          <Route path='/order' element={<OrderItemCardList/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/order' element={<Order/>} />
           <Route path='/successfulpurchase' element={<Purchased/>} />
         </Routes>
       </main>

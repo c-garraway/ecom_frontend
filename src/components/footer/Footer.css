@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     background-color: bisque;
+    font-size: small;
     color: rgb(65, 30, 5);
     align-items: center;
     padding: 10px;

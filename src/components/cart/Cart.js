@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import CartItemCard from "./CartItemCard"
-import './CartItemCardList.css'
+import CartItemsList from "./CartItemsList"
+import './Cart.css'
 import { selectCartItems, loadCartItems } from '../../features/cart/cartItemsSlice'
 import { loadCart } from "../../features/cart/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
@@ -68,32 +68,16 @@ export default function CartItemCardList() {
     return (
     <div className="ccl_container">
         <div className="cart_header">
-            <h4>Cart Items</h4>
-            <span>
-                <button 
-                type="button"
-                onClick={handleCheckout}
-                >Checkout</button>
-                <h6>Total: ${cartTotal.length < 1 ? 0 : cartTotal.cart.total}</h6>
-            </span>
-            
+            <h4>Cart Total: ${cartTotal.length < 1 ? 0 : cartTotal.cart.total}</h4>
+
+            <button 
+            type="button"
+            onClick={handleCheckout}
+            >Checkout</button>
         </div>
-        <div className="cartItems_container">
-            {cartItems.map((item) => {
-                return (
-                    <div key={item.id} >
-                        <CartItemCard
-                        cartItemID={item.id}
-                        cartItemName={item.name}
-                        cartItemDescription={item.description}
-                        cartItemQuantity={item.quantity}
-                        cartItemPrice={item.price}
-                        />
-                    </div>
-                )          
-            })} 
-        </div>
-              
+        <div className="cartItemsList">
+            <CartItemsList />
+        </div>     
     </div>
     );
 }
