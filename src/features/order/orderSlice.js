@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
+
 const initialState = () => {
     return {
         order: []
@@ -9,7 +11,7 @@ const initialState = () => {
 export const loadOrder = createAsyncThunk(
     'order/loadOrder',
     async (userID) => {
-        const response = await fetch(`http://192.168.86.57:4000/orders/user/${userID}`)
+        const response = await fetch(`${BASE_URL}/orders/user/${userID}`)
         const json = await response.json();
         return json
     }

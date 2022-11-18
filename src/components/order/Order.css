@@ -24,6 +24,11 @@
 .oc_container button{
     margin-left: 5px;
     font-size: small;
+    background-color: oldlace;
+    border: 1px solid lightgray;
+    height: fit-content;
+    padding: 5px;
+    cursor: pointer;
 }
 .orderItemDesc{
     text-transform: capitalize;
@@ -56,6 +61,7 @@
     border-radius: 0px;
     border: 1px solid black;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .orderItems_container h5 {

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { loadOrder, selectOrder } from "../../features/order/orderSlice";
 import { loadOrderItems } from "../../features/order/orderItemsSlice";
 import { createOrder, addOrderItem, updateOrder, updateCart } from "../../utilities";
+import { batchLoadOrderItems } from "../../features/order/orderItemsSlice";
 
 export default function CartItemCardList() {
     const dispatch = useDispatch()
@@ -31,8 +32,8 @@ export default function CartItemCardList() {
         
     }, [dispatch, user])
 
-    const checkIfOrderExist = () => {
-        if (order.message) {
+/*     const checkIfOrderExist = () => {
+        if (order.order.message) {
             return false
         } else {
             return true
@@ -40,6 +41,7 @@ export default function CartItemCardList() {
     }
 
     const batchLoadOrderItems = async () => {
+
         const check = checkIfOrderExist()
         if(check === false) {
             createOrder({
@@ -53,14 +55,14 @@ export default function CartItemCardList() {
                 quantity: item.quantity
             })
         })
-    }
-
-    const handleCheckout = async () => {
-        await batchLoadOrderItems()
  
-        await updateOrder(user.id)
-        await dispatch(loadOrder(user.id))
-        await dispatch(loadOrderItems(user.id))
+    }
+ */
+    const handleCheckout = () => {
+        dispatch(batchLoadOrderItems())
+            .then(() => updateOrder(user.id))
+            /* .then(() => dispatch(loadOrder(user.id)))    
+            .then(() => dispatch(loadOrderItems(user.id))) */    
         
         navigate('/order')
     }

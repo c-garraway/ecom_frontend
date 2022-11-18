@@ -74,7 +74,7 @@ function Login() {
     
 
     return(
-        <div className="login_container">
+        <div className="login_container user_form">
             <form onSubmit={handleSubmit}>               
                 <div className="email_container">
                     <label htmlFor="email">Email Address</label>
@@ -95,7 +95,11 @@ function Login() {
                         required/>
                 </div>
                 <div className="btn_msg">
-                    <button type="submit">Login</button>
+                    <div>
+                        <button type="submit">Login</button>
+                        <p className="register_check">Not yet registered? <a href="/register">Register</a></p>
+                    </div>
+                    
                     <p className="message_container">{message}</p>
                 </div>
                 

@@ -11,6 +11,11 @@
 .cc_container button{
     margin-left: 5px;
     font-size: small;
+    background-color: oldlace;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    height: fit-content;
+    padding: 4px;
 }
 .cartItemDesc{
     text-transform: capitalize;
@@ -40,6 +45,7 @@
     border: 1px solid black;
     width: 50%;
     justify-self: right;
+    cursor: pointer;
 }
 
 .cartItems_container h5 {

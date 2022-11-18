@@ -8,22 +8,12 @@ import { resetCart } from '../../features/cart/cartSlice'
 import { resetCartItems } from '../../features/cart/cartItemsSlice'
 import { resetOrder } from '../../features/order/orderSlice'
 import { resetOrderItems } from '../../features/order/orderItemsSlice'
+import { logoutUser } from '../../utilities'
 
 function LoginStatus() {
     const dispatch = useDispatch()
     const activeUser = useSelector(selectCurrentUser)
     const user = activeUser.first_name
-
-    const logoutUser = async () => {
-        
-        const response = await fetch('http://127.0.0.1:4000/users/logout', {
-            method: 'POST', 
-        })
-        const user = await response.json()
-        
-        console.log(user)
-        /* return user */
-    }
 
     const handleClick = () => {
         logoutUser()
@@ -35,29 +25,27 @@ function LoginStatus() {
     }
 
     return(
-        <div className="lStatus_container">
-                <div className="dropdown">
-                    <button className="dropbtn">{user} &#x25BC;
-                    
-                    </button>
-                    <div className="dropdown-content">
-                    {user ? 
-                    <div> 
-                        {/* <h6 className="currentUser">{user}</h6> */}
+        <div className="user_status_container">
+            {user ? 
+            <div> 
+                <div className="active_user">
+                    <div>
+                        {user}
+                    </div>
+                    <div>
                         <Link to={'/profile'}>Profile</Link> 
+                        <span> | </span>
                         <a href="/" onClick={handleClick}>Logout</a>
                     </div>
-                    :
-                    <div>
-                        <Link to={'/login'}>Login</Link>
-                        <Link to={'/register'}>Register</Link>
-                    </div>
-                    }
                 </div>
             </div> 
-            <div>
-                
+            :
+            <div className="no_user">
+                <Link to={'/login'}>Login</Link>
+                <span> | </span>
+                <Link to={'/register'}>Register</Link>
             </div>
+            }
         </div>
     )
 }
