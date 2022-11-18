@@ -1,42 +1,24 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../utilities";
 import './Users.css'
 
 function Register() {
-
+    const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [fname, setFname] = useState("")
     const [lname, setLname] = useState("")
-
-    const registerUser = async (fname, lname, email, password) => {
-        //console.log(email, password)
-        const response = await fetch('http://127.0.0.1:4000/users/register', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "first_name": `${fname}`,
-                "last_name": `${lname}`,
-                "email_address": `${email}`,
-                "password": `${password}`
-            }),  
-        })
-        const newUser = await response.json();
-        //dispatch(addUser(user))
-        console.log(newUser)
-        return newUser
-    }
-    
+    const [address, setAddress] = useState("")  
     
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        registerUser(fname, lname, email, password)       
+        registerUser(fname, lname, address, email, password) 
+        navigate('/login')
     }
 
     return(
-        <div className="register_container">
+        <div className="register_container user_form">
             <form onSubmit={handleSubmit}>               
                 <div className="fname_container">
                     <label htmlFor="fname">First Name</label>
@@ -54,6 +36,15 @@ function Register() {
                         placeholder="Enter Last Name" 
                         name="lname" 
                         onChange={(e) => setLname(e.currentTarget.value)}
+                        required/>
+                </div>
+                <div className="address_container">
+                    <label htmlFor="address"><b>Address</b></label>
+                    <input 
+                        type="text" 
+                        placeholder="Enter Address" 
+                        name="address" 
+                        onChange={(e) => setAddress(e.currentTarget.value)}
                         required/>
                 </div>
                 <div className="email_container">
@@ -75,6 +66,7 @@ function Register() {
                         required/>
                 </div>
                 <button type="submit">Register</button>
+                <p className="register_check">Already registered? <a href="/login">Login</a></p>
             </form>
         </div>
     )

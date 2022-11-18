@@ -1,46 +1,44 @@
-/* ALL */
-label, input {
-    font-size: x-small;
-    
+.user_form label, input {
+    font-size: medium;
+    margin-bottom: 10px;
 }
 
-label {
+.user_form label {
     font-weight: 500;
-    
+}
+.user_form input {
+    width: 40ch;
+    background-color: oldlace;
+    border: 1px solid lightgrey;
 }
 
-button {
-    padding: 2px;
-    font-size: x-small;
+.user_form button {
+    padding: 2px 10px;
+    font-size: medium;
     font-weight: 500;
-    background-color:oldlace;
-    border: 1px solid lightgray;
+    background-color: lightblue;
+    border: none;
     border-radius: none;
     height: 25px;
     cursor: pointer;
 }
-/* LOGIN */
-.login_container {
+
+.user_form {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    /* background-image: url(../../images/backdrop.jpg); */
-    background-size: cover;
 }
 
-.login_container form {
+.user_form form {
     border: 1px solid black;
     padding: 10px;
     width: min-content;
-    background-color: antiquewhite;
-    
 }
-
 
 .message_container {
     color: red;
-    font-size: x-small;
+    font-size: medium;
     text-align: right;
 }
 
@@ -50,103 +48,20 @@ button {
     justify-content: space-between;
 }
 
-/* LOGIN STATUS */
 
-.lStatus_container a {
+.user_status_container a {
     color: antiquewhite;
-    font-size: small;
+    font-size: medium;
     text-decoration: none;
-}
-
-.dropbtn {
-    color: antiquewhite;
-    text-transform: uppercase;
-    font-weight:lighter;
-}
-
-/* REGISTER */
-.register_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    /* background-image: url(../../images/backdrop.jpg); */
-    background-size: cover;
-}
-
-.register_container form {
-    border: 1px solid black;
-    padding: 10px;
-    width: min-content;
-    background-color: antiquewhite;
-}
-
-/* USER PROFILE */
-.uProfile_container {
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    padding: 10px;
-    /* background-image: url(../../images/backdrop.jpg); */
-    background-size: cover;
-}
-
-.uProfile_container form {
-    border: 1px solid black;
-    padding: 10px;
-    width: min-content;
-    background-color: antiquewhite;
 }
 
 .uProfile_header{
     padding-left: 10px;
     border-bottom: 1px solid lightgray;
-    /* background-color: oldlace; */
     color: rgb(65, 30, 5);
+    text-align: center;
 }
-
-.dropdown:hover .dropdown-content {
-    display: block;
+.register_check{
+    margin-top: 2px;
+    font-size: small;
 }
-
-.dropdown-content a:hover {
-background-color: #ddd;
-}
-
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    width: 100px;
-    /* padding: 14px 16px; */
-    background-color: inherit;
-    font-family: inherit;
-    /* margin: 0; */
-    border: 1px solid oldlace;
-    border-radius: 15px;
-    
-  }

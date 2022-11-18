@@ -4,10 +4,15 @@
     margin: 10px auto;
     padding: 20px;
     text-align: center;
+    font-weight: 500;
 }
 
 .thankYou_container button{
     font-size: medium;
     width: 100%;
     margin-top: 10px;
+    cursor: pointer;
+    background-color: oldlace;
+    border: 1px solid lightgray;
+    padding: 5px;
 }

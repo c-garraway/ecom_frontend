@@ -32,7 +32,11 @@
 }
 
 .pc_buttons button{
-    font-size: small;
+    font-size: medium;
+    background-color: oldlace;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .rem_btn{

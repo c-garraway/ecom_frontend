@@ -10,8 +10,7 @@ function UserProfile() {
     return(
         <div>
             <h4 className="uProfile_header">User Profile</h4>
-            <div className="uProfile_container">
-                
+            <div className="uProfile_container user_form">
                 <form>               
                     <div className="fname_container">
                         <label htmlFor="fname"><b>First Name</b></label>
