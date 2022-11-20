@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {store} from '../../app/store'
 
-const BASE_URL = process.env.REACT_APP_BASE_URL
+const BASE_URL = 'http://127.0.0.1:4000'
 
 const initialState = () => {
     return {
@@ -11,10 +12,16 @@ const initialState = () => {
 
 export const loadCartItems = createAsyncThunk(
     'cartItems/loadCartItems',
-    async (userID) => {
-        const response = await fetch(`${BASE_URL}/cartitems/user/${userID}`)
+    async () => {
+        const id = store.getState().currentUser.user.id
+        
+        if (id) {
+        const response = await fetch(`${BASE_URL}/cartitems/user/${id}`)
         const json = await response.json()
         return json
+        } else {
+            return
+        }
     }
 )
 

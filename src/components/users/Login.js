@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import './Users.css'
 import { useDispatch } from 'react-redux'
-import {addUser} from '../../features/users/currentUserSlice'
+import {loginUser, resetCurrentUser} from '../../features/users/currentUserSlice'
 import { loadCartItems } from '../../features/cart/cartItemsSlice'
 import { loadCart } from '../../features/cart/cartSlice'
 import { useNavigate } from "react-router-dom";
 import { createCart } from '../../utilities'
+import {store} from '../../app/store'
 
 
 function Login() {
@@ -16,63 +17,38 @@ function Login() {
     const dispatch = useDispatch() 
     const navigate = useNavigate()
    
-    const loginUser = async (email, password) => {
+    const login = async () => {
+        const user = dispatch(loginUser({email, password}))
+            .then(() => dispatch(loadCart()))
+            .then(() => dispatch(loadCartItems()))
 
-        const response = await fetch('http://127.0.0.1:4000/users/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "email_address": `${email}`,
-                "password": `${password}`
-            }),  
-        })
-        const user = await response.json();
-        
-        if(user.message) {
-            setMessage(user.message)
-            setEmail('')
-            setPassword('')
-            return
-        } else {
-            dispatch(addUser(user))
-            return user
-            
-        }
-        
+        return user
     }
     
-        
     const handleSubmit = async (e)=> {
-        e.preventDefault();
-        const user = await loginUser(email, password)
-        
-        if (user === undefined) {
-            return
-        }   else {
-            try {
-                const checkCart = await dispatch(loadCart(user.id))
-                if(checkCart.payload.message) {
-                    await createCart(user.id)
-                }
-                await dispatch(loadCart(user.id))
-                dispatch(loadCartItems(user.id))
-                
-                
-            } catch (error) {
-                console.log(error)
-            }
-            
-            setEmail('')
-            setPassword('')
+        e.preventDefault()
+
+        await login()
+        const chUser = checkUser()
+        console.log(chUser)
+        if(chUser === false) {return} else {
             navigate('/') 
         }
                 
     }
 
+    const checkUser = () => {
+        const message = store.getState().currentUser.user.message
+        console.log(message)
+        if(message === 'Invalid credentials') {
+            setMessage(message)
+            setEmail('')
+            setPassword('')
+            dispatch(resetCurrentUser())
+            return false
+        } else { return true}
+    }
     
-
     return(
         <div className="login_container user_form">
             <form onSubmit={handleSubmit}>               

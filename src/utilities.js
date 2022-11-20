@@ -1,6 +1,6 @@
 
 /* export const baseURL = 'http://192.168.86.57:4000' */
-const BASE_URL = process.env.REACT_APP_BASE_URL
+const BASE_URL = 'http://127.0.0.1:4000'
 
 // user functions
 export const registerUser = async (fname, lname, address, email, password) => {

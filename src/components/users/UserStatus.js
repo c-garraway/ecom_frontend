@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import './Users.css'
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
 import { useSelector, useDispatch } from "react-redux";
-import { resetUser } from '../../features/users/currentUserSlice'
+import { resetCurrentUser } from '../../features/users/currentUserSlice'
 import { resetCart } from '../../features/cart/cartSlice'
 import { resetCartItems } from '../../features/cart/cartItemsSlice'
 import { resetOrder } from '../../features/order/orderSlice'
@@ -17,7 +17,7 @@ function LoginStatus() {
 
     const handleClick = () => {
         logoutUser()
-        dispatch(resetUser())
+        dispatch(resetCurrentUser())
         dispatch(resetCart())
         dispatch(resetCartItems())
         dispatch(resetOrder())

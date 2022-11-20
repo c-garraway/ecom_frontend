@@ -7,7 +7,7 @@ import shoppingCart from '../../images/cart.png'
 
 function NavBar() {
     const cartItems = useSelector(selectCartItems)
-    const numCartItems = cartItems.length
+    const numCartItems = cartItems === undefined ? 0 : cartItems.length
 
     return(
         <div className="nav_container">
