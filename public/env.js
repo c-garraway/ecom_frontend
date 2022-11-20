@@ -79,7 +79,7 @@ window.env = {
   "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
   "PUBLIC": "C:\\Users\\Public",
   "PWD": "C:/Users/garra/Documents/LocalCodeRepository/_PRODUCTION/ecomProject/ecom_frontend",
-  "REACT_APP_BASE_URL": "http://192.168.86.57:4000",
+  "REACT_APP_BASE_URL": "http://127.0.0.1:4000",
   "RegionCode": "NA",
   "SESSIONNAME": "Console",
   "SHELL": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
