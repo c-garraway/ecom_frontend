@@ -1,11 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectOrderItems } from "../../features/order/orderItemsSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadOrderItems, selectOrderItems } from "../../features/order/orderItemsSlice";
 import OrderItemCard from './orderItemCard'
 import './Order.css'
 
 function OrderItems() {
     const orderItems = useSelector(selectOrderItems)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(loadOrderItems())
+    }, [dispatch])
+
   return (
     <div className="orderItems_container">
     <h5>Order Items</h5>

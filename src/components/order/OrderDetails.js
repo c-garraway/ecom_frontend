@@ -1,13 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectOrder } from "../../features/order/orderSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadOrder, selectOrder } from "../../features/order/orderSlice";
 import { selectCurrentUser } from "../../features/users/currentUserSlice";
 import './Order.css'
 
 function OrderDetails() {
     const user = useSelector(selectCurrentUser)
     const order = useSelector(selectOrder)
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+      dispatch(loadOrder())
+    }, [dispatch])
 
   return (
     <div className="orderDetails_container">
@@ -20,7 +24,6 @@ function OrderDetails() {
             <p>Shipping: ${order.order.shipping}</p>
             <p>Grand-Total: ${order.order.grand_total}</p>
         </div>
-
     </div>
   )
 }

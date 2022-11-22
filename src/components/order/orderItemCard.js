@@ -1,21 +1,18 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import './Order.css'
-import { loadOrderItems } from '../../features/order/orderItemsSlice'
-/* import { loadOrder } from "../../features/order/orderSlice" */
-import { selectCurrentUser } from "../../features/users/currentUserSlice"
-import { deleteOrderItem, updateOrder } from '../../utilities'
-import { loadOrder } from "../../features/order/orderSlice";
+import { loadOrderItems, deleteOrderItem } from '../../features/order/orderItemsSlice'
+import { loadOrder, updateOrder } from "../../features/order/orderSlice"
+
 
 function OrderItemCard({orderItemID, orderItemName, orderItemDescription, orderItemQuantity, orderItemPrice}) {
-    const user = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
 
-    const handleDelClick = async () => {
-        await deleteOrderItem(orderItemID)
-        await updateOrder(user.id)
-        await dispatch(loadOrder(user.id))
-        dispatch(loadOrderItems(user.id))
+    const handleDelClick = () => {
+        dispatch(deleteOrderItem(orderItemID))
+            .then(() => dispatch(updateOrder()))
+            .then(() => dispatch(loadOrder()))
+            .then(() => dispatch(loadOrderItems()))
         
     }
 

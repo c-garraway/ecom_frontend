@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {store} from '../../app/store'
 
-const BASE_URL = 'http://127.0.0.1:4000'
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 const initialState = () => {
     return {
-        cart: []
+        cart: [],
+        test: []
     };
 }
 
@@ -21,6 +22,50 @@ export const loadCart = createAsyncThunk(
         } else {
             return
         }
+    }
+)
+
+export const updateCart = createAsyncThunk(
+    'cart/updateCart',
+    async () => {
+        const id = store.getState().currentUser.user.id
+
+        if(id) {
+            const response = await fetch(`${BASE_URL}/carts/user/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                } 
+            })
+            const json = await response.json();
+            return json
+        } else {
+            return
+        }
+    }
+)
+
+export const createCart = createAsyncThunk(
+    'cart/createCart',
+    async () => {
+        const id = store.getState().currentUser.user.id
+
+        try {
+            const response = await fetch(`${BASE_URL}/carts`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "user_id": `${id}`
+                }),  
+            })
+            const json = await response.json();
+            return json
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 )
 
@@ -43,6 +88,24 @@ const cartSlice = createSlice({
         [loadCart.rejected]: (state) => {
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
+        },
+        [createCart.pending]: (state) => {
+            state.isLoadingSearchResults = true;
+            state.failedToLoadSearchResults = false;
+        },
+        [createCart.fulfilled]: (state, action) => {
+            state.cart = action.payload
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
+        },
+        [createCart.rejected]: (state) => {
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = true;
+        },
+        [updateCart.fulfilled]: (state, action) => {
+            state.test = action.payload
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
         }
     },
     

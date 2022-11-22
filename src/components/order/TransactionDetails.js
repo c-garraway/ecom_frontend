@@ -12,10 +12,11 @@ function FakeTransaction() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const handlePurchase = () => {
+  const handlePurchase = async () => {
     //TODO: reset cart to zero at database
     dispatch(resetCartItems())
     navigate('/successfulpurchase')
+      
   }
 
   return (

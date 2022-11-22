@@ -1,85 +1,77 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { createOrder} from "../../utilities";
-/* import { selectCartItems } from "../cart/cartItemsSlice"; */
-import { selectCurrentUser } from "../users/currentUserSlice";
-import { selectOrder } from "./orderSlice";
+import {store} from '../../app/store'
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 const initialState = () => {
     return {
-        items: []
+        items: [],
+        test: []
         
     };
 }
 
 export const loadOrderItems = createAsyncThunk(
     'orderItems/loadOrderItems',
-    async (userID) => {
-        const response = await fetch(`${BASE_URL}/orderitems/user/${userID}`)
-        const json = await response.json()
-        return json
+    async () => {
+        const id = store.getState().currentUser.user.id
+
+        if(id){
+            const response = await fetch(`${BASE_URL}/orderitems/user/${id}`)
+            const json = await response.json()
+            return json
+        } else {
+            return
+        }
     }
 )
 
-export const batchLoadOrderItems = createAsyncThunk (
-    'orderItems/batchLoadOrderItems',
-    async ({getState}) => {
-
-        const cartItems = getState().cartItems
-        const order = useSelector(selectOrder())
-        const user = useSelector(selectCurrentUser())
-        console.log(cartItems)
-
-        const checkIfOrderExist = () => {
-            if (order.order.message) {
-                return false
-            } else {
-                return true
+export const batchAddOrderItems = createAsyncThunk(
+    'orderItems/batchAddOrderItems',
+    async () => {
+        const cartItems = store.getState().cartItems.items
+        const order = store.getState().order.order
+        console.log(cartItems, order)
+        if(cartItems) {
+            try {
+                await cartItems.forEach(async item => {
+                    const response = await fetch(`${BASE_URL}/orderitems`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            "order_id": `${order.id}`,
+                            "product_id": `${item.productid}`,
+                            "quantity": `${item.quantity}`,
+                        }),  
+                    })
+                    const json = await response.json();
+                    return json
+                })
+                
+            } catch (error) {
+                console.log(error)
             }
         }
 
-        const check = checkIfOrderExist()
-        if(check === false) {
-            createOrder({
-            user_id: user.id,
-            status: 'pending'})
-        }
-        
-        await cartItems.forEach(async item => {
-            const response = await fetch(`${BASE_URL}/orderitems`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    "order_id": `${order.order.id}`,
-                    "product_id": `${item.productID}`,
-                    "quantity": `${item.quantity}`,
-                }),  
-            })
-            const json = await response.json();
-            return json
-        })
     }
 )
-/* export const addOrderItem = async (callData) => {
-    const {orderID, productID, quantity} = callData
-    const response = await fetch(`${baseURL}/orderitems`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            "order_id": `${orderID}`,
-            "product_id": `${productID}`,
-            "quantity": `${quantity}`,
-        }),  
-    })
-    const json = await response.json();
+
+export const deleteOrderItem = createAsyncThunk(
+    'orderItems/deleteOrderItem',
+    async (cartItemID) => {
+        const response = await fetch(`${BASE_URL}/orderitems/${cartItemID}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            }  
+        })
+    const json = await response.json()
     return json
-} */
+    }
+)
 
 const orderItemsSlice = createSlice({
     name: 'orderItems',
@@ -101,19 +93,16 @@ const orderItemsSlice = createSlice({
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = true
         },
-        [batchLoadOrderItems.pending]: (state) => {
-            state.isLoadingSearchResults = true
-            state.failedToLoadSearchResults = false
-        },
-        [batchLoadOrderItems.fulfilled]: (state, action) => {
-            state.items = action.payload
+        [batchAddOrderItems.fulfilled]: (state, action) => {
+            state.test = action.payload
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = false
         },
-        [batchLoadOrderItems.rejected]: (state) => {
+        [deleteOrderItem.fulfilled]: (state, action) => {
+            state.test = action.payload
             state.isLoadingSearchResults = false
-            state.failedToLoadSearchResults = true
-        }      
+            state.failedToLoadSearchResults = false
+        }       
     },
 })
 

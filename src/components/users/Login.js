@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import './Users.css'
 import { useDispatch } from 'react-redux'
-import {loginUser, resetCurrentUser} from '../../features/users/currentUserSlice'
-import { loadCartItems } from '../../features/cart/cartItemsSlice'
-import { loadCart } from '../../features/cart/cartSlice'
+import { loginUser, resetCurrentUser } from '../../features/users/currentUserSlice'
+import { loadAllCartItems } from '../../features/cart/cartItemsSlice'
+import { loadCart, createCart } from '../../features/cart/cartSlice'
 import { useNavigate } from "react-router-dom";
-import { createCart } from '../../utilities'
 import {store} from '../../app/store'
+import { loadOrder, createOrder } from "../../features/order/orderSlice";
 
 
 function Login() {
@@ -20,7 +20,8 @@ function Login() {
     const login = async () => {
         const user = dispatch(loginUser({email, password}))
             .then(() => dispatch(loadCart()))
-            .then(() => dispatch(loadCartItems()))
+            .then(() => dispatch(loadAllCartItems()))
+            .then(() => dispatch(loadOrder()))
 
         return user
     }
@@ -29,12 +30,19 @@ function Login() {
         e.preventDefault()
 
         await login()
-        const chUser = checkUser()
-        console.log(chUser)
-        if(chUser === false) {return} else {
-            navigate('/') 
+
+        if(!checkUser()) {
+            return
+        } 
+        
+        if (!checkCart()) {
+            dispatch(createCart())
         }
-                
+
+        if (!checkOrder()) {
+            dispatch(createOrder())
+        }
+            navigate('/')       
     }
 
     const checkUser = () => {
@@ -46,7 +54,29 @@ function Login() {
             setPassword('')
             dispatch(resetCurrentUser())
             return false
-        } else { return true}
+        } else { 
+            return true
+        }
+    }
+
+    const checkCart = () => {
+        const cartExists = store.getState().cart.cart.id
+        console.log(cartExists)
+        if(cartExists) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const checkOrder = () => {
+        const orderExists = store.getState().order.order.id
+        console.log(orderExists)
+        if(orderExists) {
+            return true
+        } else {
+            return false
+        }
     }
     
     return(

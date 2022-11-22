@@ -1,43 +1,40 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Product.css'
-import { loadCartItems  } from '../../features/cart/cartItemsSlice'
-import { selectCart, loadCart } from "../../features/cart/cartSlice";
+import { loadAllCartItems, addCartItem  } from '../../features/cart/cartItemsSlice'
+import { loadCart, updateCart } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
-import { addCartItem, updateCart } from '../../utilities'
+/* import { updateCart } from '../../utilities' */
 
 function ProductCard({productID, productName, productDescription, productPrice}) {
     const dispatch = useDispatch()
     const user = useSelector(selectCurrentUser)
-    const cartId = useSelector(selectCart)
+    //const cartId = useSelector(selectCart)
     const navigate = useNavigate()
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (user.id === undefined) {
             return
         } else {
-            dispatch(loadCart(user.id))
+            dispatch(loadCart()) //TODO: why am I doing this?
         }
         
-    }, [dispatch, user])
+    }, [dispatch, user]) */
 
-    const handleAddClick = async () => {
+    const handleAddClick = () => {
 
         if(user.length < 1) {
             navigate('/login')
         } else {
 
-            addCartItem({
-                cartID: cartId.cart.id, 
-                productID: productID,
-                quantity: 1})
-            await updateCart(user.id)
-            await dispatch(loadCart(user.id))
-            dispatch(loadCartItems(user.id))
+            dispatch(addCartItem(productID))
+                .then (() => dispatch(updateCart()))
+                .then (() => dispatch(loadCart()))
+                .then (() => dispatch(loadAllCartItems()))
         }
     }
-
+   
     return (
         <div className="pc_container">
             <div className="pt_container">
