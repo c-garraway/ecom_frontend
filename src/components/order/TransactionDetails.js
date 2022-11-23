@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { resetCartItems } from "../../features/cart/cartItemsSlice";
+import { deleteCartItems, resetCartItems } from "../../features/cart/cartItemsSlice";
+import { deleteOrderItems, resetOrderItems } from "../../features/order/orderItemsSlice";
 import { selectOrder } from "../../features/order/orderSlice";
 import { selectCurrentUser } from "../../features/users/currentUserSlice";
 import './Order.css'
@@ -13,8 +14,10 @@ function FakeTransaction() {
   const dispatch = useDispatch()
 
   const handlePurchase = async () => {
-    //TODO: reset cart to zero at database
+    dispatch(deleteCartItems())
+    dispatch(deleteOrderItems())
     dispatch(resetCartItems())
+    dispatch(resetOrderItems())
     navigate('/successfulpurchase')
       
   }

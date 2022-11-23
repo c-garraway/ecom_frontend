@@ -61,8 +61,24 @@ export const deleteCartItem = createAsyncThunk(
                 "Content-Type": "application/json",
             }  
         })
-    const json = await response.json()
-    return json
+        const json = await response.json()
+        return json
+    }
+)
+
+export const deleteCartItems = createAsyncThunk(
+    'cartItems/ deleteCartItems',
+    async () => {
+        const cartID = store.getState().cart.cart.id
+
+        const response = await fetch(`${BASE_URL}/cartitems/cart/${cartID}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            }  
+        })
+        const json = await response.json()
+        return json
     }
 )
 

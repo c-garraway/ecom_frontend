@@ -89,6 +89,7 @@ function Login() {
                         placeholder="Enter Email Address" name="email"
                         value={email}
                         onChange={(e) => {setEmail(e.currentTarget.value); setMessage('')}}
+                        autoFocus
                         required/>
                 </div>
                 <div className="psw_container">

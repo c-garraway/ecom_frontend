@@ -32,7 +32,7 @@ export const batchAddOrderItems = createAsyncThunk(
     async () => {
         const cartItems = store.getState().cartItems.items
         const order = store.getState().order.order
-        console.log(cartItems, order)
+
         if(cartItems) {
             try {
                 await cartItems.forEach(async item => {
@@ -68,8 +68,24 @@ export const deleteOrderItem = createAsyncThunk(
                 "Content-Type": "application/json",
             }  
         })
-    const json = await response.json()
-    return json
+        const json = await response.json()
+        return json
+    }
+)
+
+export const deleteOrderItems = createAsyncThunk(
+    'orderItems/deleteOrderItems',
+    async () => {
+        const orderID = store.getState().order.order.id
+
+        const response = await fetch(`${BASE_URL}/orderitems/order/${orderID}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            }  
+        })
+        const json = await response.json()
+        return json
     }
 )
 

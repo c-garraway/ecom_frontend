@@ -27,6 +27,7 @@ function Register() {
                         placeholder="Enter First Name" 
                         name="fname"
                         onChange={(e) => setFname(e.currentTarget.value)}
+                        autoFocus
                         required/>
                 </div>
                 <div className="lname_container">
