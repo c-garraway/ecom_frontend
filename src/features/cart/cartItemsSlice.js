@@ -107,7 +107,7 @@ const cartItemsSlice = createSlice({
             state.failedToLoadSearchResults = false
         },
         [addCartItem.fulfilled]: (state, action) => {
-            state.sessionAddedItems.push(action.payload) //temp
+            //state.sessionAddedItems.push(action.payload) //temp
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = false
         },
@@ -120,11 +120,24 @@ const cartItemsSlice = createSlice({
             state.failedToLoadSearchResults = false
         },
         [deleteCartItem.fulfilled]: (state, action) => {
-            state.sessionDelItems.push(action.payload) //temp
+            //state.sessionDelItems.push(action.payload) //temp
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = false
         },
         [deleteCartItem.rejected]: (state) => {
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = true
+        },
+        [deleteCartItems.pending]: (state) => {
+            state.isLoadingSearchResults = true
+            state.failedToLoadSearchResults = false
+        },
+        [deleteCartItems.fulfilled]: (state, action) => {
+            state.items = []
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = false
+        },
+        [deleteCartItems.rejected]: (state) => {
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = true
         }    

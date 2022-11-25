@@ -109,7 +109,7 @@ const currentUserSlice = createSlice({
             state.failedToLoadSearchResults = false;
         },
         [logoutUser.fulfilled]: (state, action) => {
-            state = initialState()
+            state.user = []
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;
         },

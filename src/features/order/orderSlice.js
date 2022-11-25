@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 const initialState = () => {
     return {
         order: [],
-        test: []
+        test: [] //tmp
     };
 }
 
@@ -29,7 +29,7 @@ export const loadOrder = createAsyncThunk(
 export const calcOrderTotals = createAsyncThunk(
     'order/calcOrderTotals',
     async () => {
-    console.log('calcOrder Running...')
+    //console.log('calcOrder Running...')
 
         const orderItems = store.getState().orderItems.items
         let orderTotal = 0
@@ -44,13 +44,12 @@ export const calcOrderTotals = createAsyncThunk(
             })
         }
         await orderPriceTotal()
-        console.log(orderTotal)
+        //console.log(orderTotal)
         
         const orderPriceGrandTotal= async () => {
             tax = orderTotal *.13 //hard coded for now
             grand_total = orderTotal + tax
-            console.log(tax, grand_total)
-            //return gTotal
+            //console.log(tax, grand_total)
         }
         await orderPriceGrandTotal()
 
@@ -99,7 +98,7 @@ export const createOrder = createAsyncThunk(
             },
             body: JSON.stringify({
                 "user_id": `${id}`,
-                "status": "pending" //TODO: Change at backend no need to include
+                "status": "pending"
             }),  
         })
         const json = await response.json();

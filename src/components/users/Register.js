@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from '../../features/users/currentUserSlice';
+import { registerUser } from '../../features/users/currentUserSlice'
+
 import './Users.css'
 
 function Register() {
@@ -9,11 +11,12 @@ function Register() {
     const [password, setPassword] = useState("")
     const [fname, setFname] = useState("")
     const [lname, setLname] = useState("")
-    const [address, setAddress] = useState("")  
+    const [address, setAddress] = useState("") 
+    const dispatch = useDispatch() 
     
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        registerUser(fname, lname, address, email, password) 
+        dispatch(registerUser({fname, lname, address, email, password})) 
         navigate('/login')
     }
 

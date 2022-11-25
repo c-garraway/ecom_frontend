@@ -5,7 +5,6 @@ import { loadCart, selectCart, calcCartTotal } from "../../features/cart/cartSli
 import { useNavigate } from "react-router-dom";
 import { calcOrderTotals, loadOrder, updateOrder } from "../../features/order/orderSlice";
 import { loadOrderItems, batchAddOrderItems } from "../../features/order/orderItemsSlice";
-//import { calcOrderTotals } from '../../utilities'
 
 export default function CartHeader() {
     const dispatch = useDispatch()
@@ -21,7 +20,7 @@ export default function CartHeader() {
     const handleCheckout = () => {
         dispatch(batchAddOrderItems())
             .then(() => dispatch(loadOrder()))    
-            .then(() => dispatch(loadOrderItems())) //not finishing before next
+            .then(() => dispatch(loadOrderItems()))
             .then(() => dispatch(calcOrderTotals()))
             .then(() => dispatch(updateOrder()))
             .then(() => navigate('/order'))
@@ -32,10 +31,11 @@ export default function CartHeader() {
         <div className="cart_header">
             <h4>Cart Total: ${cartTotal.cart.total < .1 ? 0 : cartTotal.cart.total}</h4>
 
+            {cartTotal.cart.total < .1 ? <h4 className="cart_empty">Shopping Cart Is Empty</h4>: 
             <button 
             type="button"
             onClick={handleCheckout}
-            >Checkout</button>
+            >Checkout</button>}            
         </div> 
     </div>
     );

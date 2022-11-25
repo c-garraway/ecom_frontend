@@ -13,7 +13,6 @@ function OrderItemCard({orderItemID, orderItemName, orderItemDescription, orderI
             .then(() => dispatch(loadOrderItems()))
             .then(() => dispatch(calcOrderTotals()))
             .then(() => dispatch(updateOrder()))
-        
     }
 
     return (

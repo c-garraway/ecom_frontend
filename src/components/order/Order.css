@@ -73,3 +73,29 @@
 .transactionDetails_container{
     font-size: medium;
 }
+@keyframes flashing {
+    0%   {color: black;}
+    25%  {color: white;}
+    50%  {color: black;}
+    100% {color: white;}
+  }
+.processing{
+    color: darkred;
+    font-weight: bold;
+    animation: blinking 1.5s ease-in-out infinite;
+    opacity: 1;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

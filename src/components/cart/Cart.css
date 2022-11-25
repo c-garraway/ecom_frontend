@@ -34,7 +34,7 @@
     width: 90%;
     padding: 10px;
     border: 1px solid lightgray;
-    margin:auto
+    margin: auto;
 }
 
 .cart_header button {
@@ -57,4 +57,7 @@
     width: 90%;
     margin: 10px auto;
     padding: 10px;
+}
+.cart_empty{
+    text-align: right;
 }

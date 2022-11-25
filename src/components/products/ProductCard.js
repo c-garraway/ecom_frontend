@@ -5,7 +5,6 @@ import { loadAllCartItems, addCartItem  } from '../../features/cart/cartItemsSli
 import { loadCart, updateCart, calcCartTotal } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
-//import { CalcCartTotal } from '../../utilities'
 
 function ProductCard({productID, productName, productDescription, productPrice}) {
     const dispatch = useDispatch()
@@ -13,18 +12,14 @@ function ProductCard({productID, productName, productDescription, productPrice})
     const navigate = useNavigate()
 
     const handleAddClick = () => {
-
         if(user.length < 1) {
             navigate('/login')
         } else {
-
-            dispatch(addCartItem(productID))
-                
+            dispatch(addCartItem(productID))               
                 .then (() => dispatch(loadCart()))
                 .then (() => dispatch(loadAllCartItems()))
                 .then (() => dispatch(calcCartTotal()))
-                .then (() => dispatch(updateCart()))
-                
+                .then (() => dispatch(updateCart()))               
         }
     }
    

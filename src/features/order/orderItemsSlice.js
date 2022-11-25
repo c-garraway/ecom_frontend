@@ -7,7 +7,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 const initialState = () => {
     return {
         items: [],
-        test: []
+        test: [] //tmp
         
     };
 }
@@ -109,15 +109,44 @@ const orderItemsSlice = createSlice({
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = true
         },
+        [batchAddOrderItems.pending]: (state) => {
+            state.isLoadingSearchResults = true
+            state.failedToLoadSearchResults = false
+        },
         [batchAddOrderItems.fulfilled]: (state, action) => {
-            state.test = action.payload
+            //state.test = action.payload
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = false
         },
+        [batchAddOrderItems.rejected]: (state) => {
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = true
+        },
+        [deleteOrderItem.pending]: (state) => {
+            state.isLoadingSearchResults = true
+            state.failedToLoadSearchResults = false
+        },
         [deleteOrderItem.fulfilled]: (state, action) => {
-            state.test = action.payload
+            //state.test = action.payload
             state.isLoadingSearchResults = false
             state.failedToLoadSearchResults = false
+        },
+        [deleteOrderItem.rejected]: (state) => {
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = true
+        },
+        [deleteOrderItems.pending]: (state) => {
+            state.isLoadingSearchResults = true
+            state.failedToLoadSearchResults = false
+        },
+        [deleteOrderItems.fulfilled]: (state, action) => {
+            state.items = []
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = false
+        },
+        [deleteOrderItems.rejected]: (state) => {
+            state.isLoadingSearchResults = false
+            state.failedToLoadSearchResults = true
         }       
     },
 })

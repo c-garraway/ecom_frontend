@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteCartItems, resetCartItems } from "../../features/cart/cartItemsSlice";
-import { loadCart, resetCart } from "../../features/cart/cartSlice";
-import { deleteOrderItems, resetOrderItems } from "../../features/order/orderItemsSlice";
-import { loadOrder, resetOrder } from "../../features/order/orderSlice";
-import { selectOrder } from "../../features/order/orderSlice";
+import { deleteCartItems } from "../../features/cart/cartItemsSlice";
+import { calcCartTotal, updateCart } from "../../features/cart/cartSlice";
+import { deleteOrderItems } from "../../features/order/orderItemsSlice";
+import { selectOrder, calcOrderTotals, updateOrder } from "../../features/order/orderSlice";
 import { selectCurrentUser } from "../../features/users/currentUserSlice";
 import './Order.css'
 
@@ -14,18 +13,24 @@ function FakeTransaction() {
   const user = useSelector(selectCurrentUser)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [processing, setProcessing] = useState('')
+
+  
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
   const handlePurchase = async () => {
+    setProcessing('Processing...')
+    await delay(4000)
+
     dispatch(deleteCartItems())
-    dispatch(deleteOrderItems())
-    dispatch(resetCartItems())
-    dispatch(resetOrderItems())
-    dispatch(resetOrder())
-    dispatch(resetCart())
-    dispatch(loadCart())
-    dispatch(loadOrder())
-    navigate('/successfulpurchase')
-      
+      .then(() => dispatch(deleteOrderItems()))
+      .then(() => dispatch(calcCartTotal()))
+      .then(() => dispatch(calcOrderTotals()))
+      .then(() => dispatch(updateCart()))
+      .then(() => dispatch(updateOrder()))
+      .then(() => navigate('/successfulpurchase'))      
   }
 
   return (
@@ -39,10 +44,14 @@ function FakeTransaction() {
       <p>Expiry Date: 10/25</p>
       <p>Card Holder: {user.first_name} {user.last_name}</p>
       <div>
+      {order.order.grand_total < .1 ? '' :
         <button
         type="button"
-        onClick={handlePurchase}>Confirm Purchase</button>
+        onClick={handlePurchase}
+        >Confirm Purchase
+        </button>}
       </div>
+      <p className="processing">{processing}</p>
     </div>
   );
 }

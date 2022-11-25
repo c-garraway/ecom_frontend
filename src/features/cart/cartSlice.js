@@ -42,7 +42,7 @@ export const calcCartTotal = createAsyncThunk(
         }
 
         cartPriceTotal()
-        console.log(cartTotal)
+        //console.log(cartTotal)
         return cartTotal.toFixed(2)
     }
 )
@@ -52,7 +52,7 @@ export const updateCart = createAsyncThunk(
     async () => {
         const id = store.getState().currentUser.user.id
         const total = store.getState().cart.cart.total
-        console.log(`total: ${total}`)
+        //console.log(`total: ${total}`)
         if(id) {
             const response = await fetch(`${BASE_URL}/carts/user/${id}`, {
                 method: 'PUT',
@@ -141,7 +141,7 @@ const cartSlice = createSlice({
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
         },
-        [calcCartTotal.fulfilled]: (state, action) => {//TODO: complete all there
+        [calcCartTotal.fulfilled]: (state, action) => {
             state.cart.total = action.payload
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;

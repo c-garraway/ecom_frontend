@@ -15,10 +15,8 @@ function Purchased() {
         <div>Thank you for your purchase!</div>
         <button
         type="button"
-        onClick={handleClick}>Continue Shopping</button>
-        
-    </div>
-  
+        onClick={handleClick}>Continue Shopping</button>        
+    </div>  
   );
 }
 

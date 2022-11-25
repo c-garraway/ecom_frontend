@@ -10,13 +10,10 @@ function CartItemCard({cartItemID, cartItemName, cartItemDescription, cartItemQu
 
     const handleDelClick = () => {
         dispatch(deleteCartItem(cartItemID))
-            
             .then(() => dispatch(loadCart()))
             .then(() => dispatch(loadAllCartItems()))
             .then (() => dispatch(calcCartTotal()))
             .then(() => dispatch(updateCart()))
-
-
     }
 
     return (

@@ -22,7 +22,6 @@ function Login() {
             .then(() => dispatch(loadCart()))
             .then(() => dispatch(loadAllCartItems()))
             .then(() => dispatch(loadOrder()))
-
         return user
     }
     
@@ -105,8 +104,7 @@ function Login() {
                     <div>
                         <button type="submit">Login</button>
                         <p className="register_check">Not yet registered? <a href="/register">Register</a></p>
-                    </div>
-                    
+                    </div>                    
                     <p className="message_container">{message}</p>
                 </div>
                 
