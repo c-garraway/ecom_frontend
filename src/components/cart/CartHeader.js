@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import './Cart.css'
 import { useDispatch, useSelector } from "react-redux"
-import { loadCart, selectCart } from "../../features/cart/cartSlice"
+import { loadCart, selectCart, calcCartTotal } from "../../features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
-import { loadOrder, updateOrder } from "../../features/order/orderSlice";
+import { calcOrderTotals, loadOrder, updateOrder } from "../../features/order/orderSlice";
 import { loadOrderItems, batchAddOrderItems } from "../../features/order/orderItemsSlice";
-
+//import { calcOrderTotals } from '../../utilities'
 
 export default function CartHeader() {
     const dispatch = useDispatch()
@@ -13,14 +13,17 @@ export default function CartHeader() {
     const cartTotal = useSelector(selectCart)
 
     useEffect(() => {
-        dispatch(loadCart())
+        dispatch(calcCartTotal())
+            .then (() => dispatch(loadCart()))
+        
     }, [dispatch])
 
     const handleCheckout = () => {
         dispatch(batchAddOrderItems())
-            .then(() => dispatch(updateOrder()))
             .then(() => dispatch(loadOrder()))    
-            .then(() => dispatch(loadOrderItems()))
+            .then(() => dispatch(loadOrderItems())) //not finishing before next
+            .then(() => dispatch(calcOrderTotals()))
+            .then(() => dispatch(updateOrder()))
             .then(() => navigate('/order'))
     }
 

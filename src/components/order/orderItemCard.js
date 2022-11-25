@@ -2,17 +2,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import './Order.css'
 import { loadOrderItems, deleteOrderItem } from '../../features/order/orderItemsSlice'
-import { loadOrder, updateOrder } from "../../features/order/orderSlice"
-
+import { loadOrder, updateOrder, calcOrderTotals } from "../../features/order/orderSlice"
 
 function OrderItemCard({orderItemID, orderItemName, orderItemDescription, orderItemQuantity, orderItemPrice}) {
     const dispatch = useDispatch()
 
     const handleDelClick = () => {
         dispatch(deleteOrderItem(orderItemID))
-            .then(() => dispatch(updateOrder()))
             .then(() => dispatch(loadOrder()))
             .then(() => dispatch(loadOrderItems()))
+            .then(() => dispatch(calcOrderTotals()))
+            .then(() => dispatch(updateOrder()))
         
     }
 

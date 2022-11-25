@@ -26,17 +26,57 @@ export const loadOrder = createAsyncThunk(
     }
 )
 
+export const calcOrderTotals = createAsyncThunk(
+    'order/calcOrderTotals',
+    async () => {
+    console.log('calcOrder Running...')
+
+        const orderItems = store.getState().orderItems.items
+        let orderTotal = 0
+        let tax
+        let grand_total
+        
+        const orderPriceTotal = async () => {
+            await orderItems.map(item => {
+                const price = +item.price
+                orderTotal += price
+                return orderTotal
+            })
+        }
+        await orderPriceTotal()
+        console.log(orderTotal)
+        
+        const orderPriceGrandTotal= async () => {
+            tax = orderTotal *.13 //hard coded for now
+            grand_total = orderTotal + tax
+            console.log(tax, grand_total)
+            //return gTotal
+        }
+        await orderPriceGrandTotal()
+
+        return {total: orderTotal.toFixed(2), tax: tax.toFixed(2), grand_total: grand_total.toFixed(2)}
+
+    }
+)
+
 export const updateOrder = createAsyncThunk(
     'order/updateOrder',
     async () => {
         const id = store.getState().currentUser.user.id
+        const order = store.getState().order.order
+        
 
         if(id){
             const response = await fetch(`${BASE_URL}/orders/user/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
-                } 
+                },
+                body: JSON.stringify({
+                    "total": `${order.total}`,
+                    "tax": `${order.tax}`,
+                    "grand_total": `${order.grand_total}`
+                }) 
             })
             const json = await response.json()
             return json
@@ -100,6 +140,21 @@ const orderSlice = createSlice({
             state.failedToLoadSearchResults = false;
         },
         [createOrder.rejected]: (state) => {
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = true;
+        }, 
+        [calcOrderTotals.pending]: (state) => {
+            state.isLoadingSearchResults = true;
+            state.failedToLoadSearchResults = false;
+        },
+        [calcOrderTotals.fulfilled]: (state, action) => {
+            state.order.total = action.payload.total
+            state.order.tax = action.payload.tax
+            state.order.grand_total = action.payload.grand_total
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
+        },
+        [calcOrderTotals.rejected]: (state) => {
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
         },

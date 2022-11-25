@@ -6,6 +6,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 const initialState = () => {
     return {
         cart: [],
+        cartTotal: [],
         test: []
     };
 }
@@ -25,17 +26,42 @@ export const loadCart = createAsyncThunk(
     }
 )
 
+export const calcCartTotal = createAsyncThunk(
+    'cart/calcCartTotal',
+    async () => {
+
+        const cartItems = store.getState().cartItems.items
+        let cartTotal = 0
+
+        const cartPriceTotal = async () => {
+            await cartItems.map(item => {
+                const price = +item.price
+                cartTotal += price
+                return cartTotal
+            })
+        }
+
+        cartPriceTotal()
+        console.log(cartTotal)
+        return cartTotal.toFixed(2)
+    }
+)
+
 export const updateCart = createAsyncThunk(
     'cart/updateCart',
     async () => {
         const id = store.getState().currentUser.user.id
-
+        const total = store.getState().cart.cart.total
+        console.log(`total: ${total}`)
         if(id) {
             const response = await fetch(`${BASE_URL}/carts/user/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
-                } 
+                },
+                body: JSON.stringify({
+                    "total": `${total}`
+                })
             })
             const json = await response.json();
             return json
@@ -102,8 +128,21 @@ const cartSlice = createSlice({
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = true;
         },
+        [updateCart.pending]: (state) => {
+            state.isLoadingSearchResults = true;
+            state.failedToLoadSearchResults = false;
+        },
         [updateCart.fulfilled]: (state, action) => {
-            state.test = action.payload
+            state.cart = action.payload
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = false;
+        },
+        [updateCart.rejected]: (state) => {
+            state.isLoadingSearchResults = false;
+            state.failedToLoadSearchResults = true;
+        },
+        [calcCartTotal.fulfilled]: (state, action) => {//TODO: complete all there
+            state.cart.total = action.payload
             state.isLoadingSearchResults = false;
             state.failedToLoadSearchResults = false;
         }

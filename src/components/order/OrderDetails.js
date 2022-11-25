@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadOrder, selectOrder } from "../../features/order/orderSlice";
+import { loadOrder, selectOrder, calcOrderTotals, updateOrder } from "../../features/order/orderSlice";
+import { loadOrderItems } from '../../features/order/orderItemsSlice'
 import { selectCurrentUser } from "../../features/users/currentUserSlice";
 import './Order.css'
 
@@ -11,6 +12,9 @@ function OrderDetails() {
 
     useEffect(() => {
       dispatch(loadOrder())
+        .then(() => dispatch(loadOrderItems()))
+        .then(() => dispatch(calcOrderTotals()))
+        .then(() => dispatch(updateOrder()))
     }, [dispatch])
 
   return (

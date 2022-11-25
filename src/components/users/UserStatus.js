@@ -1,14 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import './Users.css'
-import { selectCurrentUser } from '../../features/users/currentUserSlice'
+import { selectCurrentUser, logoutUser, resetCurrentUser } from '../../features/users/currentUserSlice'
 import { useSelector, useDispatch } from "react-redux";
-import { resetCurrentUser } from '../../features/users/currentUserSlice'
 import { resetCart } from '../../features/cart/cartSlice'
 import { resetCartItems } from '../../features/cart/cartItemsSlice'
 import { resetOrder } from '../../features/order/orderSlice'
 import { resetOrderItems } from '../../features/order/orderItemsSlice'
-import { logoutUser } from '../../utilities'
 
 function LoginStatus() {
     const dispatch = useDispatch()
@@ -16,7 +14,7 @@ function LoginStatus() {
     const user = activeUser.first_name
 
     const handleClick = () => {
-        logoutUser()
+        dispatch(logoutUser())
         dispatch(resetCurrentUser())
         dispatch(resetCart())
         dispatch(resetCartItems())

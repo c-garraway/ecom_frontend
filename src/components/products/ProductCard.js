@@ -2,25 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Product.css'
 import { loadAllCartItems, addCartItem  } from '../../features/cart/cartItemsSlice'
-import { loadCart, updateCart } from "../../features/cart/cartSlice";
+import { loadCart, updateCart, calcCartTotal } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from '../../features/users/currentUserSlice'
-/* import { updateCart } from '../../utilities' */
+//import { CalcCartTotal } from '../../utilities'
 
 function ProductCard({productID, productName, productDescription, productPrice}) {
     const dispatch = useDispatch()
     const user = useSelector(selectCurrentUser)
-    //const cartId = useSelector(selectCart)
     const navigate = useNavigate()
-
-    /* useEffect(() => {
-        if (user.id === undefined) {
-            return
-        } else {
-            dispatch(loadCart()) //TODO: why am I doing this?
-        }
-        
-    }, [dispatch, user]) */
 
     const handleAddClick = () => {
 
@@ -29,9 +19,12 @@ function ProductCard({productID, productName, productDescription, productPrice})
         } else {
 
             dispatch(addCartItem(productID))
-                .then (() => dispatch(updateCart()))
+                
                 .then (() => dispatch(loadCart()))
                 .then (() => dispatch(loadAllCartItems()))
+                .then (() => dispatch(calcCartTotal()))
+                .then (() => dispatch(updateCart()))
+                
         }
     }
    
