@@ -4,9 +4,8 @@ import './Users.css'
 import { selectCurrentUser, logoutUser, resetCurrentUser } from '../../features/users/currentUserSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { resetCart } from '../../features/cart/cartSlice'
+import { deleteOrderItems } from '../../features/order/orderItemsSlice'
 import { resetCartItems } from '../../features/cart/cartItemsSlice'
-import { resetOrder } from '../../features/order/orderSlice'
-import { resetOrderItems } from '../../features/order/orderItemsSlice'
 
 function LoginStatus() {
     const dispatch = useDispatch()
@@ -14,12 +13,11 @@ function LoginStatus() {
     const user = activeUser.first_name
 
     const handleClick = () => {
-        dispatch(logoutUser())
+        dispatch(deleteOrderItems())
+        .then(() => dispatch(logoutUser()))
         dispatch(resetCurrentUser())
         dispatch(resetCart())
         dispatch(resetCartItems())
-        dispatch(resetOrder())
-        dispatch(resetOrderItems())
     }
 
     return(
