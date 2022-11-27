@@ -35,7 +35,7 @@ function FakeTransaction() {
 
   return (
     <div className="transactionDetails_container">
-      <h3>Fake Transaction Details</h3>
+      <h3>Transaction Details (Simulation)</h3>
       <p>Payment Total: $ {order.order.grand_total}</p>
       <h3>Payment Method</h3>
       <p>Master Card </p>

@@ -35,7 +35,7 @@ export const batchAddOrderItems = createAsyncThunk(
 
         if(cartItems) {
             try {
-                await cartItems.forEach(async item => {
+                await cartItems.forEach(async item => {                    
                     const response = await fetch(`${BASE_URL}/orderitems`, {
                         method: 'POST',
                         headers: {
