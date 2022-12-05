@@ -7,7 +7,7 @@ import { loadCart, createCart } from '../../features/cart/cartSlice'
 import { useNavigate } from "react-router-dom";
 import {store} from '../../app/store'
 import { loadOrder, createOrder } from "../../features/order/orderSlice";
-
+import { Link } from "react-router-dom";
 
 function Login() {
     
@@ -46,7 +46,7 @@ function Login() {
 
     const checkUser = () => {
         const message = store.getState().currentUser.user.message
-        //console.log(message)
+        console.log(message)
         if(message === 'Invalid credentials') {
             setMessage(message)
             setEmail('')
@@ -60,7 +60,7 @@ function Login() {
 
     const checkCart = () => {
         const cartExists = store.getState().cart.cart.id
-        //console.log(cartExists)
+        console.log(cartExists)
         if(cartExists) {
             return true
         } else {
@@ -70,7 +70,7 @@ function Login() {
 
     const checkOrder = () => {
         const orderExists = store.getState().order.order.id
-        //console.log(orderExists)
+        console.log(orderExists)
         if(orderExists) {
             return true
         } else {
@@ -103,7 +103,7 @@ function Login() {
                 <div className="btn_msg">
                     <div>
                         <button type="submit">Login</button>
-                        <p className="register_check">Not yet registered? <a href="/register">Register</a></p>
+                        <p className="register_check">Not yet registered? <Link to="/register">Register</Link></p>
                     </div>                    
                     <p className="message_container">{message}</p>
                 </div>
