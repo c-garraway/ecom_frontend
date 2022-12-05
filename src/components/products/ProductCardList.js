@@ -5,14 +5,12 @@ import { useSelector, useDispatch  } from 'react-redux'
 import {loadAllProducts, selectAllProducts} from '../../features/products/productsSlice'
 
 export default function ProductCardList() {
-    
     const dispatch = useDispatch();
+    const products = useSelector(selectAllProducts)
 
     useEffect (() => {
         dispatch(loadAllProducts())
-    }, [dispatch])
-  
-    const products = useSelector(selectAllProducts)
+    }, [dispatch])    
     
     return ( 
         <div className="pcl_container">

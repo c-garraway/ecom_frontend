@@ -46,7 +46,7 @@ function Login() {
 
     const checkUser = () => {
         const message = store.getState().currentUser.user.message
-        console.log(message)
+        //console.log(message)
         if(message === 'Invalid credentials') {
             setMessage(message)
             setEmail('')
@@ -60,7 +60,7 @@ function Login() {
 
     const checkCart = () => {
         const cartExists = store.getState().cart.cart.id
-        console.log(cartExists)
+        //console.log(cartExists)
         if(cartExists) {
             return true
         } else {
@@ -70,7 +70,7 @@ function Login() {
 
     const checkOrder = () => {
         const orderExists = store.getState().order.order.id
-        console.log(orderExists)
+        //console.log(orderExists)
         if(orderExists) {
             return true
         } else {

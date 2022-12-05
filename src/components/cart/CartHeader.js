@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './Cart.css'
 import { useDispatch, useSelector } from "react-redux"
-import { loadCart, selectCart, calcCartTotal } from "../../features/cart/cartSlice"
+import { selectCart } from "../../features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
 import { calcOrderTotals, loadOrder, updateOrder } from "../../features/order/orderSlice";
 import { loadOrderItems, batchAddOrderItems } from "../../features/order/orderItemsSlice";
@@ -9,13 +9,11 @@ import { loadOrderItems, batchAddOrderItems } from "../../features/order/orderIt
 export default function CartHeader() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const cartTotal = useSelector(selectCart)
+    let cartTotal = useSelector(selectCart)
 
-    useEffect(() => {
-        dispatch(calcCartTotal())
-            .then (() => dispatch(loadCart()))
-        
-    }, [dispatch])
+    if(cartTotal.cart === undefined || cartTotal.cart.length === 0){
+        cartTotal.cart.total = 0
+    }
 
     const handleCheckout = () => {
         dispatch(batchAddOrderItems())
@@ -29,9 +27,9 @@ export default function CartHeader() {
     return (
     <div className="ccl_container">
         <div className="cart_header">
-            <h4>Cart Total: ${cartTotal.cart.total < .1 ? 0 : cartTotal.cart.total}</h4>
+            <h4>Cart Total: ${cartTotal.cart.total === 0 ? 0 : cartTotal.cart.total}</h4>
 
-            {cartTotal.cart.total < .1 ? <h4 className="cart_empty">Shopping Cart Is Empty</h4>: 
+            {cartTotal.cart.total === 0 ? <h4 className="cart_empty">Shopping Cart Is Empty</h4>: 
             <button 
             type="button"
             onClick={handleCheckout}
