@@ -30,18 +30,18 @@ function LoginStatus() {
                     <div>
                         {user}
                     </div>
-                    <div>
-                        <Link to={'/profile'}>Profile</Link> 
-                        <span> | </span>
-                        <a href="/" onClick={handleClick}>Logout</a>
+                    <div className="user_links">
+                        <Link to='/profile'>Profile</Link> 
+                        <span className="separator"> | </span>
+                        <Link to="/" onClick={handleClick}>Logout</Link>
                     </div>
                 </div>
             </div> 
             :
-            <div className="no_user">
-                <Link to={'/login'}>Login</Link>
-                <span> | </span>
-                <Link to={'/register'}>Register</Link>
+            <div className="no_user user_links">
+                <Link to='/login' >Login</Link>
+                <span className="separator"> | </span>
+                <Link to='/register'>Register</Link>
             </div>
             }
         </div>

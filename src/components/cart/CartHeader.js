@@ -29,7 +29,7 @@ export default function CartHeader() {
         <div className="cart_header">
             <h4>Cart Total: ${cartTotal.cart.total === 0 ? 0 : cartTotal.cart.total}</h4>
 
-            {cartTotal.cart.total === 0 ? <h4 className="cart_empty">Shopping Cart Is Empty</h4>: 
+            {cartTotal.cart.total === '0.00' || cartTotal.cart.total === 0 ? <h4 className="cart_empty">Shopping Cart Is Empty</h4>: 
             <button 
             type="button"
             onClick={handleCheckout}

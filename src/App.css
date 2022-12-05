@@ -14,6 +14,23 @@
   margin-top: 150px;
  }
 
+ @media only screen and (max-width: 580px) {
+  .main_container {
+    margin-top: 275px;
+   }
+   .banner_container {
+    margin-left: 10px;
+   }
+
+  .separator{
+    color: rgb(65, 30, 5);
+    
+  }
+/*   .cart_header h4{
+    font-size: xx-small;
+  } */
+ }
+
 /* .App {
   text-align: center;
 }
