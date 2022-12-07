@@ -22,14 +22,14 @@ function App() {
       </div>
       <main className='main_container'>
         <Routes>
-          <Route end path='/' element={<Banner/>} />
-          <Route end path='/login' element={<Login/>} />
-          <Route end path='/register' element={<Register/>} />
-          <Route end path='/profile' element={<UserProfile/>} />
-          <Route end path='/products' element={<ProductCardList/>} />
-          <Route end path='/cart' element={<Cart/>} />
-          <Route end path='/order' element={<Order/>} />
-          <Route end path='/successfulpurchase' element={<Purchased/>} />
+          <Route exact path='/' element={<Banner/>} />
+          <Route exact path='/login' element={<Login/>} />
+          <Route exact path='/register' element={<Register/>} />
+          <Route exact path='/profile' element={<UserProfile/>} />
+          <Route exact path='/products' element={<ProductCardList/>} />
+          <Route exact path='/cart' element={<Cart/>} />
+          <Route exact path='/order' element={<Order/>} />
+          <Route exact path='/successfulpurchase' element={<Purchased/>} />
         </Routes>
       </main>
       <Footer/>
