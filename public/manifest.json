@@ -1,5 +1,5 @@
 {
-  "short_name": "Random Store",
+  "short_name": "R O S",
   "name": "Random Online Store App",
   "icons": [
     {
@@ -20,6 +20,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#fdf5e6",
+  "theme_color": "#000000",
   "background_color": "#411e05"
 }

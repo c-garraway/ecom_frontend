@@ -36,13 +36,13 @@ function FakeTransaction() {
   return (
     <div className="transactionDetails_container">
       <h3>Transaction Details (Simulation)</h3>
-      <p>Payment Total: $ {order.order.grand_total}</p>
+      <p>Payment Total: <span className="bold">${order.order.grand_total}</span></p>
       <h3>Payment Method</h3>
       <p>Master Card </p>
       <p>Credit Card Number: 5243 37XX XXXX XXXX </p>
       <p>Security Code: **** </p>
       <p>Expiry Date: 10/25</p>
-      <p>Card Holder: {user.first_name} {user.last_name}</p>
+      <p>Card Holder: <span className="bold">{user.first_name} {user.last_name}</span></p>
       <div>
       {order.order.grand_total < .1 ? '' :
         <button

@@ -20,13 +20,13 @@ function OrderDetails() {
   return (
     <div className="orderDetails_container">
         <h3>Order Details</h3>
-        <p>Name: {user.first_name} {user.last_name}</p>
-        <p>Address: {user.address}</p>
+        <p>Name: <span className="bold">{user.first_name} {user.last_name}</span></p>
+        <p>Address: <span className="bold">{user.address}</span></p>
         <div>
-            <p>Sub-Total: ${order.order.total}</p>
-            <p>Tax: ${order.order.tax}</p>
-            <p>Shipping: ${order.order.shipping}</p>
-            <p>Grand-Total: ${order.order.grand_total}</p>
+            <p>Sub-Total: <span className="bold">${order.order.total}</span></p>
+            <p>Tax: <span className="bold">${order.order.tax}</span></p>
+            <p>Shipping: <span className="bold">${order.order.shipping}</span></p>
+            <p>Grand-Total: <span className="bold">${order.order.grand_total}</span></p>
         </div>
     </div>
   )
