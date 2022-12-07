@@ -16,6 +16,8 @@ window.env = {
   "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
   "EDITOR": "notepad.exe",
   "EXEPATH": "C:\\Program Files\\Git\\bin",
+  "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+  "FPS_BROWSER_USER_PROFILE_STRING": "Default",
   "GIT_ASKPASS": "c:\\Users\\garra\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
   "HOME": "C:\\Users\\garra",
   "HOMEDRIVE": "C:",
