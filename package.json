@@ -1,6 +1,7 @@
 {
   "name": "ecom_frontend",
-  "version": "0.1.0",
+  "version": "1.1.0",
+  "homepage": "https://ecom-frontend-9mng.onrender.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
