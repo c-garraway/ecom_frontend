@@ -1,46 +1,30 @@
-# Getting Started with Create React App and Redux
+# Random Online Store - PWA Client
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+## Application Description
+This is a simple online store with standard functionality.
 
-In the project directory, you can run:
+## Application URL
+### [ecom-frontend-9mng.onrender.com](https://ecom-frontend-9mng.onrender.com/)
 
-### `npm start`
+## Build Technologies
+This full stack web development project was built with the following technologies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Visual Studio Code
+- GitHub
+- PostgreSQL
+- Node JS: Express, BCrypt, Passport + Local
+- React JS: React-Router, Redux
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Supporting Service Repository
+- Node JS Web Service: [GitHub Repository](https://github.com/c-garraway/express_ecom_api)
 
-### `npm test`
+## Hosting Service
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Render](https://www.render.com/): Node Web Service, PostgreSQL Database & React PWA Client
 
-### `npm run build`
+`Note: The web service for this application may take up to 30 seconds to respond to an initial request after a 15 minute period of inactivity. This is a consequence of free tier hosting.`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This is a portfolio project, built as a part of my Full Stack Web Development training course.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
