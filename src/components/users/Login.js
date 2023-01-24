@@ -79,7 +79,7 @@ function Login() {
     }
     
     return(
-        <div className="login_container user_form">
+        <div className="login_container user_form user_container">
             <form onSubmit={handleSubmit}>               
                 <div className="email_container">
                     <label htmlFor="email">Email Address</label>

@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom"
 import './NavBar.css'
 import { selectCartItems } from '../../features/cart/cartItemsSlice'
 import { useSelector } from "react-redux"
-import shoppingCart from '../../images/cart.png'
 
 function NavBar() {
     const cartItems = useSelector(selectCartItems)
@@ -25,7 +24,7 @@ function NavBar() {
             <div>
                 <NavLink to="/cart"
                 className={(navData) => "nav_link_active_" + navData.isActive }
-                >CART <span className="dot">{numCartItems}</span></NavLink>     
+                >CART <span className="dot">[ {numCartItems} ]</span></NavLink>     
             </div>
                 
             

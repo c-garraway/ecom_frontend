@@ -9,12 +9,11 @@
     padding: 5px 10px;
     border-top: 1px solid lightgray;
     font-size: small;
-    
 }
 .OrderItemsList{
     border: 1px solid lightgray;
     width: 90%;
-    margin: 10px auto;
+    margin: 20px auto;
     padding: 10px;
 }
 .oc_container button{
@@ -22,6 +21,7 @@
     font-size: small;
     background-color: oldlace;
     border: 1px solid lightgray;
+    color: black;
     height: fit-content;
     padding: 5px;
     cursor: pointer;
@@ -35,29 +35,44 @@
 .orderDetails_container{
     font-size: medium;
 }
+.ocl_container {
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 20px;
+    opacity: .9;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 95%;
+
+}
 
 .ocl_container h4 {
     padding-left: 10px;
     color: rgb(65, 30, 5);
+
 }
 .order_header{
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 90%;
     padding: 10px;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     margin:auto
 }
 
 .order_header button {
-    font-size: small;
-    font-weight:600;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
-    background-color: lightcoral;
-    border-radius: 0px;
-    border: 1px solid black;
-    margin-top: 10px;
+    background-color: rgb(83, 185, 219);
+    color: black;
+    border-radius: 25px;
+    border: none;
+    width: 100%;
+    height: 3rem;
+    justify-self: right;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .orderItems_container h5 {
@@ -76,8 +91,10 @@
 .processing{
     color: darkred;
     font-weight: bold;
+    text-align: center;
     animation: blinking 1.5s ease-in-out infinite;
     opacity: 1;
+    margin-top: 20px;
 }
 
 @keyframes blinking {
@@ -92,4 +109,21 @@
   100% {
     opacity: 1;
   }
+}
+
+@media only screen and (max-width: 580px) {
+    .order_header{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 90%;
+        padding: 10px;
+        /* border: 1px solid lightgray; */
+        margin:auto
+    }
+    .transactionDetails_container{
+        margin-top: 10px;
+    }
+    .oc_container {
+        grid-template-columns: 1fr 1.25fr 1fr .75fr 1fr;
+    }
 }

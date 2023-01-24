@@ -2,32 +2,30 @@
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
+  
 }
 
 .fixed_container {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 100;
  }
 
  .main_container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 140px;
   background-image: url(./images/womanBackground.jpg);
   background-size:cover;
   background-position: center;
   min-height: calc(100vh - 140px);
-
+  z-index: -100;
  }
 
  @media only screen and (max-width: 580px) {
-  .main_container {
-    margin-top: 275px;
-   }
-   .banner_container {
-    margin-left: 10px;
-   }
+
 
   .separator{
     color: rgb(65, 30, 5);

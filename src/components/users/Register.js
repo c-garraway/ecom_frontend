@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from '../../features/users/currentUserSlice'
 import { Link } from "react-router-dom";
 import './Users.css'
-import background from './../../images/womanBackground.jpg'
 
 function Register() {
     const navigate = useNavigate()
@@ -22,7 +21,7 @@ function Register() {
     }
 
     return(
-        <div className="register_container user_form">
+        <div className="register_container user_form user_container">
             <form onSubmit={handleSubmit}>               
                 <div className="fname_container">
                     <label htmlFor="fname">First Name</label>

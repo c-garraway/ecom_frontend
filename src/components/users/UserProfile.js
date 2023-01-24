@@ -8,7 +8,7 @@ function UserProfile() {
     const userInfo = useSelector(selectCurrentUser)
 
     return(
-        <div>
+        <div className="user_container">
             <h4 className="uProfile_header">User Profile</h4>
             <div className="uProfile_container user_form">
                 <form>               

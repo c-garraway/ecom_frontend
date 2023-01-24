@@ -1,3 +1,13 @@
+.ccl_container {
+    background-color: white;
+    opacity: .9;
+    padding-top: 10px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 95%;
+
+}
 .cc_container {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr .5fr 1fr;
@@ -13,6 +23,7 @@
     font-size: small;
     background-color: oldlace;
     border: 1px solid lightgray;
+    color: black;
     cursor: pointer;
     height: fit-content;
     padding: 4px;
@@ -32,18 +43,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 90%;
-    padding: 10px;
-    border: 1px solid lightgray;
+    /* padding: 10px; */
+    /* border: 1px solid lightgray; */
     margin: auto;
 }
 
 .cart_header button {
-    font-size: small;
+    font-size: large;
+    font-weight: bold;
     padding: 5px;
-    background-color: lightcoral;
-    border-radius: none;
-    border: 1px solid black;
-    width: 50%;
+    background-color: rgb(83, 185, 219);
+    color: black;
+    border-radius: 25px;
+    border: none;
+    width: 80%;
+    height: 3rem;
     justify-self: right;
     cursor: pointer;
 }
@@ -55,9 +69,15 @@
 .cartItemsList{
     border: 1px solid lightgray;
     width: 90%;
-    margin: 10px auto;
+    margin: 20px auto;
     padding: 10px;
 }
 .cart_empty{
     text-align: right;
+}
+
+@media only screen and (max-width: 580px) {
+    .cc_container {
+        grid-template-columns: 1fr 1.25fr 1fr .75fr 1fr;
+    }
 }

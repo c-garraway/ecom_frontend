@@ -48,7 +48,7 @@ function FakeTransaction() {
         <button
         type="button"
         onClick={handlePurchase}
-        >Confirm Purchase
+        >CONFIRM PURCHASE
         </button>}
       </div>
       <p className="processing">{processing}</p>

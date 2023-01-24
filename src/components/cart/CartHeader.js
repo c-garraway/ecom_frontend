@@ -33,7 +33,7 @@ export default function CartHeader() {
             <button 
             type="button"
             onClick={handleCheckout}
-            >Checkout</button>}            
+            >CHECKOUT</button>}            
         </div> 
     </div>
     );

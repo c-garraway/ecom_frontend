@@ -37,6 +37,8 @@
     border: 1px solid lightgray;
     cursor: pointer;
     padding: 5px;
+    color: black;
+
 }
 
 .rem_btn{
@@ -48,6 +50,8 @@
     flex-wrap: wrap;
     justify-content: center;   
     background-color: white;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 
 .products_title h4{

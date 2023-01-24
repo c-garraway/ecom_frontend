@@ -6,6 +6,8 @@
     padding: 15px 10px;
     font-size: large;
     list-style: none;
+    z-index: 100;
+
 }
 
 .nav_link_active_false{
@@ -18,20 +20,19 @@
     text-align: center;
     text-decoration: none;
     background-color: rgb(83, 185, 219);
-    ;
     color: rgb(65, 30, 5);
     padding: 3px 10px;
     border-radius: 15px;
     margin-right: 1em;
 }
 
-.dot{
+/* .dot{
     display: inline-block;
     background-color: white;
     color: black;
     height: 26px;
     width: 26px;
-    border-radius: 50%;
+    border-radius: 45%;
     text-align: center;
     border: 1px solid black;
-}
+} */

@@ -27,8 +27,8 @@ function LoginStatus() {
             {user ? 
             <div> 
                 <div className="active_user">
-                    <div>
-                        {user}
+                    <div className="userProfile">
+                       {user}
                     </div>
                     <div className="user_links">
                         <Link to='/profile'>Profile</Link> 
@@ -41,7 +41,7 @@ function LoginStatus() {
             <div className="no_user user_links">
                 <Link to='/login' >Login</Link>
                 <span className="separator"> | </span>
-                <Link to='/register'>Register</Link>
+                <Link to='/register' className="register">Register</Link>
             </div>
             }
         </div>
