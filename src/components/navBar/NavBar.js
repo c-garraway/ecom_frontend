@@ -25,7 +25,7 @@ function NavBar() {
             <div>
                 <NavLink to="/cart"
                 className={(navData) => "nav_link_active_" + navData.isActive }
-                ><img src={shoppingCart} alt="CART" width={25}/> <span className="dot">{numCartItems}</span></NavLink>     
+                >CART <span className="dot">{numCartItems}</span></NavLink>     
             </div>
                 
             

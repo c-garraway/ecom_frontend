@@ -13,7 +13,7 @@ function UserProfile() {
             <div className="uProfile_container user_form">
                 <form>               
                     <div className="fname_container">
-                        <label htmlFor="fname"><b>First Name</b></label>
+                        <label htmlFor="fname">First Name</label>
                         <input 
                             type="text"                            
                             name="fname"
@@ -21,7 +21,7 @@ function UserProfile() {
                             required/>
                     </div>
                     <div className="lname_container">
-                        <label htmlFor="lname"><b>Last Name</b></label>
+                        <label htmlFor="lname">Last Name</label>
                         <input 
                             type="text"                            
                             name="lname" 
@@ -29,7 +29,7 @@ function UserProfile() {
                             required/>
                     </div>
                     <div className="email_container">
-                        <label htmlFor="email"><b>Email Address</b></label>
+                        <label htmlFor="email">Email Address</label>
                         <input 
                             type="text"                            
                             name="email" 
@@ -37,7 +37,7 @@ function UserProfile() {
                             required/>
                     </div>
                     <div className="address_container">
-                        <label htmlFor="address"><b>Address</b></label>
+                        <label htmlFor="address">Address</label>
                         <input 
                             type="text"                            
                             name="address" 
@@ -45,7 +45,7 @@ function UserProfile() {
                             required/>
                     </div>
                     <div className="acreated_container">
-                        <label htmlFor="acreated"><b>Account Created Date</b></label>
+                        <label htmlFor="acreated">Account Created Date</label>
                         <input 
                             type="text"                            
                             name="acreated" 

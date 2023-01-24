@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from '../../features/users/currentUserSlice'
 import { Link } from "react-router-dom";
 import './Users.css'
+import background from './../../images/womanBackground.jpg'
 
 function Register() {
     const navigate = useNavigate()
@@ -43,7 +44,7 @@ function Register() {
                         required/>
                 </div>
                 <div className="address_container">
-                    <label htmlFor="address"><b>Address</b></label>
+                    <label htmlFor="address">Address</label>
                     <input 
                         type="text" 
                         placeholder="Enter Address" 

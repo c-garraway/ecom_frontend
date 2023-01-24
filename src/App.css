@@ -11,7 +11,14 @@
  }
 
  .main_container {
-  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  margin-top: 140px;
+  background-image: url(./images/womanBackground.jpg);
+  background-size:cover;
+  background-position: center;
+  min-height: calc(100vh - 140px);
+
  }
 
  @media only screen and (max-width: 580px) {
