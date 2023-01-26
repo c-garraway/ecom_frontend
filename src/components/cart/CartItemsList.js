@@ -9,7 +9,7 @@ function CartItemsList() {
   return (
     <div className="cartItems_container">
     <h5>Cart Items</h5>
-    {cartItems.map((item) => {
+    {cartItems?.map((item) => {
         return (
             <div key={item.id} >
                 <CartItemCard

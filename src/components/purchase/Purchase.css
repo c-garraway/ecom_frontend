@@ -12,12 +12,15 @@
 
 .thankYou_container button{
     font-size: medium;
-    width: 100%;
-    margin-top: 10px;
-    cursor: pointer;
-    background-color: oldlace;
-    border: 1px solid lightgray;
+    font-weight: bold;
     padding: 5px;
+    background-color: rgb(83, 185, 219);
     color: black;
-
+    border-radius: 25px;
+    border: none;
+    width: 90%;
+    height: 3rem;
+    justify-self: right;
+    cursor: pointer;
+    margin-top: 20px;
 }

@@ -102,7 +102,7 @@ function Login() {
                 </div>
                 <div className="btn_msg">
                     <div>
-                        <button type="submit">Login</button>
+                        <button type="submit">LOGIN</button>
                         <p className="register_check">Not yet registered? <Link to="/register">Register</Link></p>
                     </div>                    
                     <p className="message_container">{message}</p>

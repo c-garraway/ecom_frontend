@@ -16,27 +16,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 140px;
+  margin-top: 130px;
   background-image: url(./images/womanBackground.jpg);
   background-size:cover;
   background-position: center;
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 130px);
   z-index: -100;
  }
 
  @media only screen and (max-width: 580px) {
 
-
   .separator{
     color: rgb(65, 30, 5);
     
   }
-/*   .order_header{
-    display: block;
-    grid-template-columns:none;
 
-  } */
-/*   .cart_header h4{
-    font-size: xx-small;
-  } */
  }

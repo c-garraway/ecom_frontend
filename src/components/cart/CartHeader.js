@@ -12,9 +12,9 @@ export default function CartHeader() {
     let cartTotal = useSelector(selectCart)
 
     if(cartTotal.cart === undefined || cartTotal.cart.length === 0){
-        cartTotal.cart.total = 0
+        cartTotal = 0
     }
-
+    
     const handleCheckout = () => {
         dispatch(batchAddOrderItems())
             .then(() => dispatch(loadOrder()))    
@@ -27,9 +27,9 @@ export default function CartHeader() {
     return (
     <div className="ccl_container">
         <div className="cart_header">
-            <h4>Cart Total: ${cartTotal.cart.total === 0 ? 0 : cartTotal.cart.total}</h4>
+            <h4>Cart Total: ${cartTotal?.cart?.total === '0.00' || cartTotal === 0 ? 0 : cartTotal?.cart.total}</h4>
 
-            {cartTotal.cart.total === '0.00' || cartTotal.cart.total === 0 ? <h4 className="cart_empty">Cart Is Empty</h4>: 
+            {cartTotal?.cart?.total === '0.00' || cartTotal === 0 ? <h4 className="cart_empty">Cart Is Empty</h4>: 
             <button 
             type="button"
             onClick={handleCheckout}

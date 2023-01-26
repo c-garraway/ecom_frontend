@@ -25,12 +25,12 @@ function FakeTransaction() {
     await delay(4000)
 
     dispatch(deleteCartItems())
+      .then(() => navigate('/successfulpurchase'))      
       .then(() => dispatch(deleteOrderItems()))
       .then(() => dispatch(calcCartTotal()))
       .then(() => dispatch(calcOrderTotals()))
       .then(() => dispatch(updateCart()))
       .then(() => dispatch(updateOrder()))
-      .then(() => navigate('/successfulpurchase'))      
   }
 
   return (
