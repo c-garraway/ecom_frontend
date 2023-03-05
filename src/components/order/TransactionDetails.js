@@ -13,7 +13,7 @@ function FakeTransaction() {
   const user = useSelector(selectCurrentUser)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [processing, setProcessing] = useState('')
+  const [processing, setProcessing] = useState('not-processing')
 
   
   const delay = ms => new Promise(
@@ -21,7 +21,7 @@ function FakeTransaction() {
   );
 
   const handlePurchase = async () => {
-    setProcessing('Processing...')
+    setProcessing('processing')
     await delay(4000)
 
     dispatch(deleteCartItems())
@@ -51,7 +51,7 @@ function FakeTransaction() {
         >CONFIRM PURCHASE
         </button>}
       </div>
-      <p className="processing">{processing}</p>
+      <p className={processing}>Processing...</p>
     </div>
   );
 }

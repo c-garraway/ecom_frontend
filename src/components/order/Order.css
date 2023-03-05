@@ -90,12 +90,17 @@
 }
 
 .processing{
+    visibility: visible;
     color: darkred;
     font-weight: bold;
     text-align: center;
     animation: blinking 1.5s ease-in-out infinite;
     opacity: 1;
     margin-top: 20px;
+}
+
+.not-processing{
+    visibility: hidden;
 }
 
 @keyframes blinking {
