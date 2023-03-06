@@ -7,7 +7,7 @@ function Header() {
 
     return(
         <div className="header_container">
-            <h1>RANDOM ONLINE STORE</h1>
+            <h1>ROS</h1>
             <UserStatus />
         </div>
     )

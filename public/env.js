@@ -3,7 +3,7 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\garra\\AppData\\Roaming",
   "asl.log": "Destination=file",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\LOCAL\\crashpad_40728_UXNVTLEFCTXOCJYX",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\LOCAL\\crashpad_16004_RNPWMESDQFQFLMVG",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
@@ -35,7 +35,7 @@ window.env = {
   "MSYSTEM_CHOST": "x86_64-w64-mingw32",
   "MSYSTEM_PREFIX": "C:/Program Files/Git/mingw64",
   "NODE": "C:\\Program Files\\nodejs\\node.exe",
-  "npm_command": "run-script",
+  "npm_command": "start",
   "npm_config_cache": "C:\\Users\\garra\\AppData\\Local\\npm-cache",
   "npm_config_globalconfig": "C:\\Users\\garra\\AppData\\Roaming\\npm\\etc\\npmrc",
   "npm_config_global_prefix": "C:\\Users\\garra\\AppData\\Roaming\\npm",
@@ -48,8 +48,8 @@ window.env = {
   "npm_config_userconfig": "C:\\Users\\garra\\.npmrc",
   "npm_config_user_agent": "npm/8.13.2 node/v16.15.0 win32 x64 workspaces/false",
   "npm_execpath": "C:\\Users\\garra\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
-  "npm_lifecycle_event": "build",
-  "npm_lifecycle_script": "react-dotenv && react-scripts build",
+  "npm_lifecycle_event": "start",
+  "npm_lifecycle_script": "react-dotenv && react-scripts start",
   "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
   "npm_package_json": "C:\\Users\\garra\\Documents\\LocalCodeRepository\\_PRODUCTION\\ecomProject\\ecom_frontend\\package.json",
   "npm_package_name": "ecom_frontend",
@@ -106,6 +106,5 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\garra\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
   "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-4a957a52da-sock",
   "WINDIR": "C:\\WINDOWS",
-  "_": "C:/Program Files/nodejs/node.exe",
-  "__COMPAT_LAYER": "DetectorsAppHealth"
+  "_": "C:/Program Files/nodejs/node.exe"
 };

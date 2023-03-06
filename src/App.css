@@ -16,19 +16,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 130px;
+  margin-top: 100px;
   background-image: url(./images/womanBackground.jpg);
   background-size:cover;
   background-position: center;
-  min-height: calc(100vh - 130px);
+  min-height: calc(100svh - 130px);
   z-index: -100;
  }
 
- @media only screen and (max-width: 580px) {
+/*  @media only screen and (max-width: 580px) {
 
   .separator{
     color: rgb(65, 30, 5);
     
   }
 
- }
+ } */

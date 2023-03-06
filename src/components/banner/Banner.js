@@ -37,7 +37,8 @@ function Banner() {
 
     return(
         <div className="banner_container">
-            <h1>Hi there! and welcome to the Random Store.</h1>
+            <h2>Hi there! and welcome to the</h2>
+            <h1 className="store-title">Random Online Store</h1>
             <h3 className={guestStatus}>Click <span className="guest-login" onClick={handleGuest}>HERE</span> to explore as a guest!</h3>            
         </div>
     )

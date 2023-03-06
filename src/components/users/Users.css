@@ -84,10 +84,10 @@
 
 @media only screen and (max-width: 580px) {
     .user_status_container a {
-        font-size: x-large;
+        font-size: large;
     }  
     .active_user {
-        font-size: x-large;
+        font-size: large;
         margin-left: 35px;
     }  
 }
